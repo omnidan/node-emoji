@@ -12,8 +12,12 @@
     "url": "https://github.com/omnidan/node-emoji/issues"
   },
   "dependencies": {},
+  "devDependencies": {
+    "should": "^3.2.0"
+  },
   "scripts": {
-    "emojiparse": "node lib/emojiparse.js"
+    "emojiparse": "node lib/emojiparse.js",
+    "test": "mocha --require should --bail --reporter spec test/*"
   },
   "main": "index.js",
   "license": "MIT"
