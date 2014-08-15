@@ -1,4 +1,4 @@
-# node-emoji
+# node-emoji [![Build Status](https://travis-ci.org/omnidan/node-emoji.svg?branch=master)](https://travis-ci.org/omnidan/node-emoji) [![Code Climate](https://codeclimate.com/github/omnidan/node-emoji/badges/gpa.svg)](https://codeclimate.com/github/omnidan/node-emoji)
 _simple emoji support for node.js projects_
 
 ![node-emoji example](http://i.imgur.com/RgFj97V.png) 
