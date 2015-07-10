@@ -29,6 +29,14 @@ describe("emoji.js", function () {
         coffee.should.be.exactly('coffee');
       });
     });
+
+    describe("emojify(str)", function () {
+      it("should parse :emoji: in a string and replace them with the right emoji", function () {
+        var coffee = emoji.emojify('I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+');
+        should.exist(coffee);
+        coffee.should.be.exactly('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
+      });
+    });
   });
 
   describe("object", function () {
