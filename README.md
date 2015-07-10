@@ -1,4 +1,7 @@
-# node-emoji [![Build Status](https://travis-ci.org/omnidan/node-emoji.svg?branch=master)](https://travis-ci.org/omnidan/node-emoji) [![Code Climate](https://codeclimate.com/github/omnidan/node-emoji/badges/gpa.svg)](https://codeclimate.com/github/omnidan/node-emoji)
+# node-emoji
+
+[![NPM version (1.0.0)](https://img.shields.io/npm/v/node-emoji.svg?style=flat-square)](https://browsenpm.org/package/node-emoji) [![Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=flat-square)](https://travis-ci.org/omnidan/node-emoji) [![Dependencies](https://img.shields.io/david/omnidan/node-emoji.svg?style=flat-square)](https://david-dm.org/omnidan/node-emoji) [![Code Climate](https://img.shields.io/codeclimate/github/omnidan/node-emoji.svg?style=flat-square)](https://codeclimate.com/github/omnidan/node-emoji)
+
 _simple emoji support for node.js projects_
 
 ![node-emoji example](http://i.imgur.com/RgFj97V.png) 
