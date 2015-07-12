@@ -37,3 +37,6 @@ Then run `npm run-script emojiparse` in the project directory or `node emojipars
 This should generate the new emoji.json file and output `Done.`.
 
 That's all, you now have more emoji you can use! :clap:
+
+## Support / Donations
+If you want to support node-emoji development, please consider donating (it helps me keeping my projects active and alive!): [![https://gratipay.com/omnidan/](https://img.shields.io/gratipay/omnidan.svg?style=flat-square)](https://gratipay.com/omnidan/)
