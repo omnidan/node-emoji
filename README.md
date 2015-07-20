@@ -30,7 +30,7 @@ console.log(emoji.fast_forward); // returns the emoji code for fast_forward (dis
 ```
 
 ## Adding new emoji
-Emoji come from [js-emoji](https://github.com/iamcal/js-emoji/blob/master/emoji.js#L164-L1010) (Thanks a lot :thumbsup:).
+Emoji come from js-emoji (Thanks a lot :thumbsup:). You can get a JSON file with all emoji here: https://github.com/omnidan/node-emoji/blob/master/lib/emoji.json
 
 To update the list or add custom emoji, clone this repository and put them into `lib/emojifile.js`.
 Then run `npm run-script emojiparse` in the project directory or `node emojiparse` in the lib directory.
