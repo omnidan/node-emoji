@@ -36,6 +36,11 @@ describe("emoji.js", function () {
         should.exist(coffee);
         coffee.should.be.exactly('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
       });
+      it("should leave unknown emoji", function () {
+        var coffee = emoji.emojify('I :unknown_emoji: :star: :another_one:');
+        should.exist(coffee);
+        coffee.should.be.exactly('I :unknown_emoji: ⭐️ :another_one:');
+      });
     });
   });
 
