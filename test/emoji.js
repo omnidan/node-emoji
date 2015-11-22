@@ -36,17 +36,30 @@ describe("emoji.js", function () {
         should.exist(coffee);
         coffee.should.be.exactly('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
       });
+      it("should not parse string emoji", function () {
+        var coffee = emoji.emojify('I :heart: :D :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+');
+        should.exist(coffee);
+        coffee.should.be.exactly('I ❤️ :D ☕️! -  😯⭐️😍  ::: test : : 👍+');
+      });
       it("should leave unknown emoji", function () {
         var coffee = emoji.emojify('I :unknown_emoji: :star: :another_one:');
         should.exist(coffee);
         coffee.should.be.exactly('I :unknown_emoji: ⭐️ :another_one:');
       });
     });
+
+    describe("emojify(str, {enableStringEmoji: true})", function() {
+      it("should also parse string :emoji: in a string and replace them with the right emoji", function () {
+        var coffee = emoji.emojify(';) I <3 :coffee: ! - :) :D :::((( :/ :(', {enableStringEmoji: true});
+        should.exist(coffee);
+        coffee.should.be.exactly('😉 I ❤️ ☕️ ! - 🙂 😀 ::🙁(( 😕 🙁');
+      });
+    });
   });
 
   describe("object", function () {
     it("should return an emoji code", function () {
-      var coffee = emoji.emoji.coffee;
+      var coffee = emoji.emoji[":coffee:"];
       should.exist(coffee);
       coffee.should.be.exactly('☕️');
     });
