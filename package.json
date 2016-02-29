@@ -1,6 +1,6 @@
 {
   "name": "node-emoji",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "simple emoji support for node.js projects",
   "author": "Daniel Bugl <daniel.bugl@touchlay.com>",
   "repository": {
@@ -13,12 +13,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^1.21.4",
-    "should": "^3.2.0"
+    "mocha": "^2.4.5",
+    "should": "^8.2.2"
   },
   "scripts": {
     "emojiparse": "node lib/emojiparse.js",
-    "test": "mocha --require should --bail --reporter spec test/*"
+    "test": "./node_modules/.bin/mocha --require should --bail --reporter spec test/*",
+    "prepublish": "npm run test"
   },
   "main": "index.js",
   "license": "MIT"
