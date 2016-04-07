@@ -27,6 +27,11 @@ describe("emoji.js", function () {
       should.exist(coffee);
       coffee.should.be.exactly('coffee');
     });
+    it("should work for differently formed characters", function () {
+      var umbrella = emoji.which('☔');
+      should.exist(umbrella);
+      umbrella.should.be.exactly('umbrella');
+    });
   });
 
   describe("emojify(str)", function () {
