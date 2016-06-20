@@ -52,6 +52,14 @@ describe("emoji.js", function () {
       should.exist(coffee);
       coffee.should.be.exactly('I :unknown_emoji: ⭐️ :another_one:');
     });
+
+    it("should replace unknown emoji using provided cb function", function () {
+      var coffee = emoji.emojify('I :unknown_emoji: :star: :another_one:', function(name) {
+        return name;
+      });
+      should.exist(coffee);
+      coffee.should.be.exactly('I unknown_emoji ⭐️ another_one');
+    });
   });
 
   it("should return an emoji code", function () {
