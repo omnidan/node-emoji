@@ -39,6 +39,10 @@ describe("emoji.js", function () {
       should.exist(umbrella2);
       umbrella1.should.equal(umbrella2);
     });
+    it('should identify flags correctly', function () {
+      var flag_mx = emoji.which('🇲🇽');
+      flag_mx.should.equal('flag-mx')
+    })
   });
 
   describe("emojify(str)", function () {
