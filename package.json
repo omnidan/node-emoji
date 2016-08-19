@@ -26,8 +26,8 @@
     "string.prototype.codepointat": "^0.2.0"
   },
   "devDependencies": {
-    "mocha": "^2.4.5",
-    "should": "^8.2.2"
+    "mocha": "^3.0.2",
+    "should": "^11.1.0"
   },
   "scripts": {
     "emojiparse": "node lib/emojiparse.js",
