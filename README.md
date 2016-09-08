@@ -15,11 +15,12 @@ You're now ready to use emoji in your node projects! Awesome! :metal:
 
 ## Usage
 ```javascript
-var emoji = require('node-emoji');
-console.log(emoji.get('coffee')); // returns the emoji code for coffee (displays emoji on terminals that support it)
-console.log(emoji.which(emoji.get('coffee'))); // returns the string "coffee"
-console.log(emoji.get(':fast_forward:')); // `.get` also supports github flavored markdown emoji (http://www.emoji-cheat-sheet.com/)
-console.log(emoji.emojify('I :heart: :coffee:!')); // replaces all :emoji: with the actual emoji, in this case: returns "I ❤️ ☕️!"
+var emoji = require('node-emoji')
+emoji.get('coffee') // returns the emoji code for coffee (displays emoji on terminals that support it)
+emoji.which(emoji.get('coffee')) // returns the string "coffee"
+emoji.get(':fast_forward:') // `.get` also supports github flavored markdown emoji (http://www.emoji-cheat-sheet.com/)
+emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emoji, in this case: returns "I ❤️ ☕️!"
+emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
 ```
 
 ## Adding new emoji
