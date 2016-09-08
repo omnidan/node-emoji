@@ -21,6 +21,16 @@ describe("emoji.js", function () {
     });
   });
 
+  describe("random()", function () {
+    it("should return a random emoji and the corresponding key", function () {
+      var result = emoji.random();
+      should.exist(result);
+      should.exist(result.key);
+      should.exist(result.emoji);
+      result.emoji.should.be.exactly(emoji.get(result.key));
+    });
+  });
+
   describe("which(emoji_code)", function () {
     it("should return name of the emoji", function () {
       var coffee = emoji.which('☕️');
