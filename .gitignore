@@ -4,3 +4,4 @@ node_modules
 *.sublime-workspace
 *.txt
 test.js
+coverage
