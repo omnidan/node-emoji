@@ -26,10 +26,12 @@
     "string.prototype.codepointat": "^0.2.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "mocha": "^3.0.2",
     "should": "^11.1.0"
   },
   "scripts": {
+    "coverage": "./node_modules/.bin/istanbul cover _mocha test",
     "emojiparse": "node lib/emojiparse.js",
     "test": "./node_modules/.bin/mocha --require should --bail --reporter spec test/*",
     "prepublish": "npm run test"
