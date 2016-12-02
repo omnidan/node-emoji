@@ -4,7 +4,7 @@
 "use strict";
 
 var should = require('should');
-var emoji = require('../index');
+var emoji = require('..lib/emoji');
 
 describe("emoji.js", function () {
   describe("get(emoji)", function () {
