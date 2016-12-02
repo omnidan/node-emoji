@@ -37,6 +37,6 @@
     "test": "./node_modules/.bin/mocha --require should --bail --reporter spec test/*",
     "prepublish": "npm run test"
   },
-  "main": "index.js",
+  "main": "lib/emoji.js",
   "license": "MIT"
 }
