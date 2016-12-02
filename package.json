@@ -22,6 +22,7 @@
   "bugs": {
     "url": "https://github.com/omnidan/node-emoji/issues"
   },
+  "files": ["lib"],
   "dependencies": {
     "string.prototype.codepointat": "^0.2.0"
   },
