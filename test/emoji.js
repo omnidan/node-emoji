@@ -77,4 +77,24 @@ describe("emoji.js", function () {
     should.exist(coffee);
     coffee.should.be.exactly('☕️');
   });
+
+  describe("find(str)", function () {
+    it("should return partially matched emojis", function () {
+      var matchingEmojis = emoji.find("cof");
+      var coffee = matchingEmojis[0];
+      should.exist(coffee);
+      coffee.emoji.should.be.exactly('☕️');
+      coffee.key.should.be.exactly("coffee");
+
+      var coffin = matchingEmojis[1];
+      should.exist(coffin);
+      coffin.emoji.should.be.exactly('⚰');
+      coffin.key.should.be.exactly("coffin");
+    });
+
+    it("should return an empty array when no matching emojis are found", function () {
+      var matchingEmojis = emoji.find("notAnEmoji");
+      matchingEmojis.length.should.be.exactly(0);
+    });
+  });
 });
