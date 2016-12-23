@@ -80,7 +80,7 @@ describe("emoji.js", function () {
 
   describe("find(str)", function () {
     it("should return partially matched emojis", function () {
-      var matchingEmojis = emoji.find("cof");
+      var matchingEmojis = emoji.search("cof");
       var coffee = matchingEmojis[0];
       should.exist(coffee);
       coffee.emoji.should.be.exactly('☕️');
@@ -92,8 +92,24 @@ describe("emoji.js", function () {
       coffin.key.should.be.exactly("coffin");
     });
 
+    it("should only include emojies that begin with the search", function () {
+      var matchingEmojis = emoji.search("ca");
+      matchingEmojis.forEach(function(emoji) {
+        var index = emoji.key.indexOf("ca");
+        index.should.be.exactly(0);
+      });
+    });
+
+    it("should match when you include the colon", function () {
+      var matchingEmojis = emoji.search(":c");
+      matchingEmojis.forEach(function(emoji) {
+        var index = emoji.key.indexOf("c");
+        index.should.be.exactly(0);
+      });
+    });
+
     it("should return an empty array when no matching emojis are found", function () {
-      var matchingEmojis = emoji.find("notAnEmoji");
+      var matchingEmojis = emoji.search("notAnEmoji");
       matchingEmojis.length.should.be.exactly(0);
     });
   });
