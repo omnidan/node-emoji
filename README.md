@@ -24,7 +24,7 @@ emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'h
 ```
 
 ## Adding new emoji
-Emoji come from js-emoji (Thanks a lot :thumbsup:). You can get a JSON file with all emoji here: https://github.com/omnidan/node-emoji/blob/master/lib/emoji.json
+Emoji come from js-emoji (Thanks a lot :thumbsup:). You can get a JSON file with all emoji here: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 
 To update the list or add custom emoji, clone this repository and put them into `lib/emojifile.js`.
 Then run `npm run-script emojiparse` in the project directory or `node emojiparse` in the lib directory.
