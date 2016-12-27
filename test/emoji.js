@@ -78,18 +78,12 @@ describe("emoji.js", function () {
     coffee.should.be.exactly('☕️');
   });
 
-  describe("find(str)", function () {
+  describe("search(str)", function () {
     it("should return partially matched emojis", function () {
       var matchingEmojis = emoji.search("cof");
-      var coffee = matchingEmojis[0];
-      should.exist(coffee);
-      coffee.emoji.should.be.exactly('☕️');
-      coffee.key.should.be.exactly("coffee");
-
-      var coffin = matchingEmojis[1];
-      should.exist(coffin);
-      coffin.emoji.should.be.exactly('⚰');
-      coffin.key.should.be.exactly("coffin");
+      matchingEmojis.forEach(function(emoji) {
+        emoji.key.should.match(/^cof/);
+      });
     });
 
     it("should only include emojies that begin with the search", function () {
