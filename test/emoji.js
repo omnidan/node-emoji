@@ -81,6 +81,7 @@ describe("emoji.js", function () {
   describe("search(str)", function () {
     it("should return partially matched emojis", function () {
       var matchingEmojis = emoji.search("cof");
+      matchingEmojis.length.should.not.eql(0);
       matchingEmojis.forEach(function(emoji) {
         emoji.key.should.match(/^cof/);
       });
@@ -88,6 +89,7 @@ describe("emoji.js", function () {
 
     it("should only include emojies that begin with the search", function () {
       var matchingEmojis = emoji.search("ca");
+      matchingEmojis.length.should.not.eql(0);
       matchingEmojis.forEach(function(emoji) {
         var index = emoji.key.indexOf("ca");
         index.should.be.exactly(0);
@@ -96,6 +98,7 @@ describe("emoji.js", function () {
 
     it("should match when you include the colon", function () {
       var matchingEmojis = emoji.search(":c");
+      matchingEmojis.length.should.not.eql(0);
       matchingEmojis.forEach(function(emoji) {
         var index = emoji.key.indexOf("c");
         index.should.be.exactly(0);
