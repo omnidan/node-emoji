@@ -77,4 +77,37 @@ describe("emoji.js", function () {
     should.exist(coffee);
     coffee.should.be.exactly('☕️');
   });
+
+  describe("search(str)", function () {
+    it("should return partially matched emojis", function () {
+      var matchingEmojis = emoji.search("cof");
+      matchingEmojis.length.should.not.eql(0);
+      matchingEmojis.forEach(function(emoji) {
+        emoji.key.should.match(/^cof/);
+      });
+    });
+
+    it("should only include emojies that begin with the search", function () {
+      var matchingEmojis = emoji.search("ca");
+      matchingEmojis.length.should.not.eql(0);
+      matchingEmojis.forEach(function(emoji) {
+        var index = emoji.key.indexOf("ca");
+        index.should.be.exactly(0);
+      });
+    });
+
+    it("should match when you include the colon", function () {
+      var matchingEmojis = emoji.search(":c");
+      matchingEmojis.length.should.not.eql(0);
+      matchingEmojis.forEach(function(emoji) {
+        var index = emoji.key.indexOf("c");
+        index.should.be.exactly(0);
+      });
+    });
+
+    it("should return an empty array when no matching emojis are found", function () {
+      var matchingEmojis = emoji.search("notAnEmoji");
+      matchingEmojis.length.should.be.exactly(0);
+    });
+  });
 });
