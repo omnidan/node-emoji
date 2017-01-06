@@ -1,6 +1,6 @@
 {
   "name": "node-emoji",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "simple emoji support for node.js projects",
   "author": "Daniel Bugl <daniel.bugl@touchlay.com>",
   "repository": {
