@@ -72,6 +72,20 @@ describe("emoji.js", function () {
     });
   });
 
+  describe("unemojify(str)", function() {
+    it("should return an empty string for null input", function() {
+      emoji.unemojify('').should.be.exactly('');
+      emoji.unemojify(null).should.be.exactly('');
+      emoji.unemojify().should.be.exactly('');
+    });
+
+    it("should replace emojis in a string with their names", function() {
+      var coffee = emoji.unemojify('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
+      should.exist(coffee);
+      coffee.should.be.exactly('I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+');
+    });
+  });
+
   it("should return an emoji code", function () {
     var coffee = emoji.emoji.coffee;
     should.exist(coffee);
