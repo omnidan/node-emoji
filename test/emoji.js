@@ -110,4 +110,24 @@ describe("emoji.js", function () {
       matchingEmojis.length.should.be.exactly(0);
     });
   });
+
+  describe("unemojify(str)", function () {
+    it("should parse emoji and replace them with :emoji:", function() {
+      var coffee = emoji.unemojify('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
+      should.exist(coffee);
+      coffee.should.be.exactly('I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+');
+    })
+
+    it("should leave unknown emoji", function () {
+      var coffee = emoji.unemojify('I :unknown_emoji: ⭐️ :another_one:');
+      should.exist(coffee);
+      coffee.should.be.exactly('I :unknown_emoji: :star: :another_one:');
+    });
+
+    it("should parse a complex emoji like woman-kiss-woman and replace it with :woman-kiss-woman:", function() {
+      var coffee = emoji.unemojify('I love 👩‍❤️‍💋‍👩');
+      should.exist(coffee);
+      coffee.should.be.exactly('I love :woman-kiss-woman:');
+    })
+  });
 });
