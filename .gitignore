@@ -5,3 +5,4 @@ node_modules
 *.txt
 test.js
 coverage
+play.js

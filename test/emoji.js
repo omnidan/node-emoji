@@ -119,9 +119,9 @@ describe("emoji.js", function () {
     })
 
     it("should leave unknown emoji", function () {
-      var coffee = emoji.unemojify('I :unknown_emoji: ⭐️ :another_one:');
+      var coffee = emoji.unemojify('I ⭐️ :another_one: 🥕');
       should.exist(coffee);
-      coffee.should.be.exactly('I :unknown_emoji: :star: :another_one:');
+      coffee.should.be.exactly('I :star: :another_one: 🥕');
     });
 
     it("should parse a complex emoji like woman-kiss-woman and replace it with :woman-kiss-woman:", function() {
