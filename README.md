@@ -1,6 +1,6 @@
 # node-emoji
 
-[![NPM version (1.0.3)](https://img.shields.io/npm/v/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji) [![NPM Downloads](https://img.shields.io/npm/dm/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji) [![Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=flat-square)](https://travis-ci.org/omnidan/node-emoji) [![Dependencies](https://img.shields.io/david/omnidan/node-emoji.svg?style=flat-square)](https://david-dm.org/omnidan/node-emoji) [![Code Climate](https://img.shields.io/codeclimate/github/omnidan/node-emoji.svg?style=flat-square)](https://codeclimate.com/github/omnidan/node-emoji) [![https://paypal.me/DanielBugl/10](https://img.shields.io/badge/donate-paypal-yellow.svg?style=flat-square)](https://paypal.me/DanielBugl/10) [![https://gratipay.com/~omnidan/](https://img.shields.io/badge/donate-gratipay/bitcoin-yellow.svg?style=flat-square)](https://gratipay.com/~omnidan/)
+[![NPM version (1.0.3)](https://img.shields.io/npm/v/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji) [![NPM Downloads](https://img.shields.io/npm/dm/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji) [![Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=flat-square)](https://travis-ci.org/omnidan/node-emoji) [![Dependencies](https://img.shields.io/david/omnidan/node-emoji.svg?style=flat-square)](https://david-dm.org/omnidan/node-emoji) [![Code Climate](https://img.shields.io/codeclimate/github/omnidan/node-emoji.svg?style=flat-square)](https://codeclimate.com/github/omnidan/node-emoji) [![https://paypal.me/DanielBugl/10](https://img.shields.io/badge/donate-paypal-yellow.svg?style=flat-square)](https://paypal.me/DanielBugl/10) [![1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](https://img.shields.io/badge/donate-bitcoin-yellow.svg?style=flat-square)](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
 
 _simple emoji support for node.js projects_
 
@@ -38,7 +38,6 @@ That's all, you now have more emoji you can use! :clap:
 If you want to support node-emoji development, please consider donating (it helps me keeping my projects active and alive!):
 
  * Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
- * Gratipay: [![https://gratipay.com/omnidan/](https://img.shields.io/gratipay/omnidan.svg?style=flat-square)](https://gratipay.com/omnidan/)
- * Bitcoin: 114veSsYoyw2QrXkPTxHD51B5i39TinsBP
+ * Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
 
 ![http://i.imgur.com/RgzXqGD.png](http://i.imgur.com/RgzXqGD.png)
