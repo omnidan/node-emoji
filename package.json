@@ -1,6 +1,6 @@
 {
   "name": "node-emoji",
-  "version": "1.6.1",
+  "version": "1.6.0",
   "description": "simple emoji support for node.js projects",
   "author": "Daniel Bugl <daniel.bugl@touchlay.com>",
   "repository": {
@@ -23,6 +23,7 @@
     "url": "https://github.com/omnidan/node-emoji/issues"
   },
   "dependencies": {
+    "lodash.toarray": "^4.4.0",
     "string.prototype.codepointat": "^0.2.0"
   },
   "devDependencies": {
