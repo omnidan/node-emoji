@@ -22,6 +22,7 @@ emoji.get(':fast_forward:') // `.get` also supports github flavored markdown emo
 emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emoji, in this case: returns "I ❤️ ☕️!"
 emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
 emoji.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
+emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
 ```
 
 ## Adding new emoji
