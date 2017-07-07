@@ -115,7 +115,7 @@ describe("emoji.js", function () {
     it("should parse emoji and replace them with :emoji:", function() {
       var coffee = emoji.unemojify('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
       should.exist(coffee);
-      coffee.should.be.exactly('I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+');
+      coffee.should.be.exactly('I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :thumbsup:+');
     })
 
     it("should leave unknown emoji", function () {
