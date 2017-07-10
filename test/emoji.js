@@ -70,6 +70,15 @@ describe("emoji.js", function () {
       should.exist(coffee);
       coffee.should.be.exactly('I unknown_emoji ⭐️ another_one');
     });
+
+    it("should wrap emoji using provided cb function", function () {
+      var coffee = emoji.emojify('I :heart: :coffee:', null, function(code, name) {
+        return '<img alt="' + code + '" src="' + name + '.png" />';
+      });
+
+      should.exist(coffee);
+      coffee.should.be.exactly('I <img alt="❤️" src="heart.png" /> <img alt="☕️" src="coffee.png" />');
+    });
   });
 
   it("should return an emoji code", function () {
