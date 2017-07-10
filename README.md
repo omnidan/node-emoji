@@ -69,5 +69,3 @@ If you want to support node-emoji development, please consider donating (it help
 
  * Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
  * Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
-
-![http://i.imgur.com/RgzXqGD.png](http://i.imgur.com/RgzXqGD.png)
