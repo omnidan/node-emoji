@@ -24,6 +24,36 @@ emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'h
 emoji.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
 ```
 
+## Options
+
+### onMissing
+`emoji.emojify(str, onMissing)`;
+
+As second argument, `emojify` takes an handler to parse unknown emojis. Provide a function to add your own handler:
+
+```js
+var onMissing = function (name) {
+  return name;
+});
+
+var emojified = emoji.emojify('I :unknown_emoji: :star: :another_one:', onMissing);
+// emojified: I unknown_emoji ⭐️ another_one
+```
+
+### format
+`emoji.emojify(str, onMissing, format)`;
+
+As third argument, `emojify` takes an handler to wrap parsed emojis. Provide a function to place emojis in custom elements, and to apply your custom styling:
+
+```js
+var format = function (code, name) {
+  return '<img alt="' + code + '" src="' + name + '.png" />';
+});
+
+var emojified = emoji.emojify('I :unknown_emoji: :star: :another_one:', null, format);
+// emojified: I <img alt="❤️" src="heart.png" /> <img alt="☕️" src="coffee.png" />
+```
+
 ## Adding new emoji
 Emoji come from js-emoji (Thanks a lot :thumbsup:). You can get a JSON file with all emoji here: https://raw.githubusercontent.com/omnidan/node-emoji/master/lib/emoji.json
 
