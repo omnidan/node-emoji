@@ -71,13 +71,36 @@ describe("emoji.js", function () {
       coffee.should.be.exactly('I unknown_emoji ⭐️ another_one');
     });
 
-    it("should wrap emoji using provided cb function", function () {
+    it("should wrap emoji using provided format function", function () {
       var coffee = emoji.emojify('I :heart: :coffee:', null, function(code, name) {
         return '<img alt="' + code + '" src="' + name + '.png" />';
       });
 
       should.exist(coffee);
       coffee.should.be.exactly('I <img alt="❤️" src="heart.png" /> <img alt="☕️" src="coffee.png" />');
+    });
+
+    it("should not wrap unknown using provided format function", function () {
+      var coffee = emoji.emojify('I :unknown_emoji: :coffee:', null, function(code, name) {
+        return '<img alt="' + code + '" src="' + name + '.png" />';
+      });
+
+      should.exist(coffee);
+      coffee.should.be.exactly('I :unknown_emoji: <img alt="☕️" src="coffee.png" />');
+    });
+
+    it("should replace unknown emojis and wrap known emojis using cb functions", function () {
+      var coffee = emoji.emojify('I :unknown_emoji: :coffee:', 
+        function(name) {
+          return name;
+        }, 
+        function(code, name) {
+          return '<img alt="' + code + '" src="' + name + '.png" />';
+        }
+      );
+
+      should.exist(coffee);
+      coffee.should.be.exactly('I unknown_emoji <img alt="☕️" src="coffee.png" />');
     });
   });
 
