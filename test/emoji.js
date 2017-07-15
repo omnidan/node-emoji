@@ -159,6 +159,12 @@ describe("emoji.js", function () {
       var coffee = emoji.unemojify('I love 👩‍❤️‍💋‍👩');
       should.exist(coffee);
       coffee.should.be.exactly('I love :woman-kiss-woman:');
-    })
+    });
+
+    it("should parse flags correctly", function () {
+      var flags = emoji.unemojify('The flags of 🇲🇽 and 🇲🇦 are not the same');
+      should.exists(flags);
+      flags.should.be.exactly('The flags of :flag-mx: and :flag-ma: are not the same');
+    });
   });
 });
