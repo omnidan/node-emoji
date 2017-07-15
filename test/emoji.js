@@ -37,17 +37,32 @@ describe("emoji.js", function () {
       should.exist(coffee);
       coffee.should.be.exactly('coffee');
     });
+
     it("should work for differently formed characters", function () {
       var umbrella = emoji.which('☔');
       should.exist(umbrella);
       umbrella.should.be.exactly('umbrella');
     });
+
     it("should return the same name for differently formed characters", function () {
       var umbrella1 = emoji.which('☔');
       should.exist(umbrella1);
       var umbrella2 = emoji.which('☔️');
       should.exist(umbrella2);
       umbrella1.should.equal(umbrella2);
+    });
+
+    it("should work for flags", function() {
+      var mexico = emoji.which('🇲🇽');
+      should.exists(mexico);
+      mexico.should.be.exactly('flag-mx');
+
+      var marocco = emoji.which('🇲🇦');
+      should.exists(marocco);
+      marocco.should.be.exactly('flag-ma');
+      
+      // see issue #21
+      mexico.should.not.equal(marocco);
     });
   });
 
@@ -57,6 +72,13 @@ describe("emoji.js", function () {
       should.exist(coffee);
       coffee.should.be.exactly('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+');
     });
+
+    it("should handle flags correctly", function() {
+      var flags = emoji.emojify('Mexico :flag-mx: and Marocco :flag-ma: are not the same');
+      should.exists(flags);
+      flags.should.be.exactly('Mexico 🇲🇽 and Marocco 🇲🇦 are not the same');
+    });
+
     it("should leave unknown emoji", function () {
       var coffee = emoji.emojify('I :unknown_emoji: :star: :another_one:');
       should.exist(coffee);
@@ -160,6 +182,12 @@ describe("emoji.js", function () {
       var coffee = emoji.unemojify('I love 👩‍❤️‍💋‍👩');
       should.exist(coffee);
       coffee.should.be.exactly('I love :woman-kiss-woman:');
-    })
+    });
+
+    it("should parse flags correctly", function () {
+      var flags = emoji.unemojify('The flags of 🇲🇽 and 🇲🇦 are not the same');
+      should.exists(flags);
+      flags.should.be.exactly('The flags of :flag-mx: and :flag-ma: are not the same');
+    });
   });
 });
