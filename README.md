@@ -23,6 +23,8 @@ emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emo
 emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
 emoji.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
 emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
+emoji.find('🍕'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+emoji.find('pizza'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
 ```
 
 ## Options
