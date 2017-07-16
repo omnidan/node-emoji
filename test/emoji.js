@@ -190,4 +190,29 @@ describe("emoji.js", function () {
       flags.should.be.exactly('The flags of :flag-mx: and :flag-ma: are not the same');
     });
   });
+
+  describe('find emoji', function() {
+    it('Should be able to find a emoji by :name:', function() {
+      var result = emoji.find(':heart:')
+      should.exists(result);
+      result.should.eql({ emoji: '❤️', key: 'heart' });
+    });
+
+    it('Should be able to find an emoji by name', function() {
+      var result = emoji.find('heart');
+      should.exists(result);
+      result.should.eql({ emoji: '❤️', key: 'heart' });
+    });
+
+    it('Should be able to find an emoji by code', function() {
+      var result = emoji.find('❤');
+      should.exists(result);
+      result.should.eql({ emoji: '❤️', key: 'heart' });
+    });
+
+    it('Should return `undefined` for unknown emojis', function() {
+      var result = emoji.find('unknown_emoji');
+      should.not.exists(result);
+    })
+  });
 });
