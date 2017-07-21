@@ -215,4 +215,36 @@ describe("emoji.js", function () {
       should.not.exists(result);
     })
   });
+
+  describe('hasEmoji', function() {
+    it('Should be able to check a emoji by :name:', function() {
+      var result = emoji.hasEmoji(':heart:');
+      result.should.equal(true)
+    });
+
+    it('Should be able to check a emoji by name', function() {
+      var result = emoji.hasEmoji('heart');
+      result.should.equal(true);
+    });
+
+    it('Should be able to check a emoji by code text form)', function() {
+      var result = emoji.hasEmoji('❤');
+      result.should.equal(true);
+    });
+
+    it('Should be able to check a emoji by code in variant form', function() {
+      var result = emoji.hasEmoji('❤️');
+      result.should.equal(true);
+    });
+
+    it('Should return false for unknown emoji names', function() {
+      var result = emoji.hasEmoji(':pizza-kiss-coffee:');
+      result.should.equal(false);
+    });
+
+    it('Should return false for unknown emoji codes', function() {
+      var result = emoji.hasEmoji('🍕❤️‍💋‍☕');
+      result.should.equal(false);
+    });
+  });
 });

@@ -25,6 +25,8 @@ emoji.search('cof') // returns an array of objects with matching emoji's. `[{ em
 emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
 emoji.find('🍕'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
 emoji.find('pizza'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+emoji.hasEmoji('🍕'); // Validate if this library knows an emoji like `🍕`
+emoji.hasEmoji('pizza'); // Validate if this library knowns a emoji with the name `pizza`
 ```
 
 ## Options
