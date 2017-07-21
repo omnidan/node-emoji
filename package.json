@@ -34,6 +34,7 @@
     "coverage": "./node_modules/.bin/istanbul cover _mocha test",
     "emojiparse": "node lib/emojiparse.js",
     "test": "./node_modules/.bin/mocha --require should --bail --reporter spec test/*",
+    "watch": "./node_modules/.bin/mocha --require should --bail --reporter spec test/* --watch",
     "prepublish": "npm run test"
   },
   "main": "index.js",
