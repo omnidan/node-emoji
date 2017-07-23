@@ -23,18 +23,18 @@ emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emo
 emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
 emoji.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
 emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
-emoji.find('🍕'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
-emoji.find('pizza'); // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
-emoji.hasEmoji('🍕'); // Validate if this library knows an emoji like `🍕`
-emoji.hasEmoji('pizza'); // Validate if this library knowns a emoji with the name `pizza`
-emoji.strip('⚠️ 〰️ 〰️ low disk space'); // Strips the string from emoji's, in this case returns: "low disk space".
-emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`); // Replace emoji's by callback method: "warning: low disk space"
+emoji.find('🍕') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+emoji.find('pizza') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+emoji.hasEmoji('🍕') // Validate if this library knows an emoji like `🍕`
+emoji.hasEmoji('pizza') // Validate if this library knowns a emoji with the name `pizza`
+emoji.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emoji's, in this case returns: "low disk space".
+emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: "warning: low disk space"
 ```
 
 ## Options
 
 ### onMissing
-`emoji.emojify(str, onMissing)`;
+`emoji.emojify(str, onMissing)`
 
 As second argument, `emojify` takes an handler to parse unknown emojis. Provide a function to add your own handler:
 
@@ -48,7 +48,7 @@ var emojified = emoji.emojify('I :unknown_emoji: :star: :another_one:', onMissin
 ```
 
 ### format
-`emoji.emojify(str, onMissing, format)`;
+`emoji.emojify(str, onMissing, format)`
 
 As third argument, `emojify` takes an handler to wrap parsed emojis. Provide a function to place emojis in custom elements, and to apply your custom styling:
 
