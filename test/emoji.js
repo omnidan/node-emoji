@@ -247,4 +247,55 @@ describe("emoji.js", function () {
       result.should.equal(false);
     });
   });
+
+  describe('replace', function() {
+    it('Should be able to strip emojis', function() {
+      var result = emoji.replace('Host: eseaps001 Addr: 10.XX.XX.XX: - ⚠️ 〰️ 〰️ low disk space', '', true);
+      result.should.equal('Host: eseaps001 Addr: 10.XX.XX.XX: - low disk space');
+    });
+
+    it('Should keep the trailing spaces when not explicitly told to clean', function() {
+      var result = emoji.replace('Host: eseaps001 Addr: 10.XX.XX.XX: - ⚠️ 〰️ 〰️ low disk space', '');
+      result.should.equal('Host: eseaps001 Addr: 10.XX.XX.XX: -    low disk space');
+    });
+
+    it('Should be able to strip a emoji by code text form', function() {
+      var result = emoji.replace('I ❤ coffee', '', true);
+      result.should.equal('I coffee');
+    });
+
+    it('Should be able to strip a emoji by code in variant form', function() {
+      var result = emoji.replace('I ❤️ cleaning', '', true);
+      result.should.equal('I cleaning');
+    });
+
+    it('Should be able to strip complex emojis', function() {
+      var result = emoji.replace('Where did this 👩‍❤️‍💋‍👩 happen?', '', true);
+      result.should.equal('Where did this happen?');
+    });
+
+    it('Should be able to strip flag emojis', function() {
+      var result = emoji.replace('There is no flag 🇲🇽', '', true);
+      result.should.equal('There is no flag');
+    });
+
+    it('Should be able to replace by callback function', function() {
+      var result = emoji.replace('There is no ⚠ on my hard drive', function (emoji) { 
+        return emoji.key;
+      });
+      result.should.equal('There is no warning on my hard drive');
+    });
+
+    it('Non existing complex emojis are known to be ignored', function() {
+      var result = emoji.replace('Some 🍕❤️‍💋‍☕ emoji', '');
+      result.should.not.equal('Some emoji');
+    });
+  });
+
+  describe('strip', function() {
+    it('Should be able to strip emojis', function() {
+      var result = emoji.strip('Host: eseaps001 Addr: 10.XX.XX.XX: - ⚠️ 〰️ 〰️ low disk space');
+      result.should.equal('Host: eseaps001 Addr: 10.XX.XX.XX: - low disk space');
+    });
+  });
 });
