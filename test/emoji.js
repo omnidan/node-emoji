@@ -38,6 +38,14 @@ describe("emoji.js", function () {
       coffee.should.be.exactly('coffee');
     });
 
+    it("should work for emojis with skin tone", function () {
+      var infoDeskPersonBrown = emoji.which('💁🏾');
+      should.exist(infoDeskPersonBrown);
+      var infoDeskPersonWhite = emoji.which('💁🏼');
+      should.exist(infoDeskPersonWhite);
+      infoDeskPersonBrown.should.equal(infoDeskPersonWhite);
+    });
+
     it("should work for differently formed characters", function () {
       var umbrella = emoji.which('☔');
       should.exist(umbrella);
