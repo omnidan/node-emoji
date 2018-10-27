@@ -6,6 +6,8 @@ _simple emoji support for node.js projects_
 
 ![node-emoji example](https://i.imgur.com/yIo5Uux.png)
 
+**Help wanted:** We are looking for volunteers to maintain this project, if you are interested, feel free to contact me at [me@omnidan.net](mailto:me@omnidan.net)
+
 ## Installation
 To install `node-emoji`, you need [node.js](http://nodejs.org/) and [npm](https://github.com/npm/npm#super-easy-install). :rocket:
 
