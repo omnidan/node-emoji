@@ -8,11 +8,17 @@ var emoji = require('../index');
 
 describe("emoji.js", function () {
   describe("get(emoji)", function () {
-    it("should return an emoji code", function () {
+    it("should return an emoji code when passed a string", function () {
       var coffee = emoji.get('coffee');
       should.exist(coffee);
       coffee.should.be.exactly('☕');
     });
+
+    it("should return emoji code back when passed an emoji code", function () {
+      var dancers = emoji.get('👯‍♀️');
+      should.exist(dancers);
+      dancers.should.be.exactly('👯‍♀️');
+    })
 
     it("should support github flavored markdown emoji", function () {
       var coffee = emoji.get(':coffee:');
