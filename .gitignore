@@ -5,3 +5,5 @@ node_modules
 *.txt
 test.js
 coverage
+package-lock.json
+yarn.lock
