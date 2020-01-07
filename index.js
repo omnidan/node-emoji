@@ -71,6 +71,8 @@ const core = {
 	search(key) {
 		ow(key, ow.string);
 
+		key = normalizeName(key);
+
 		return emojiData
 			.filter(([name]) => name.includes(key))
 			.map(([key, emoji]) => ({key, emoji}));
