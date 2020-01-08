@@ -18,7 +18,7 @@
 		"node": ">=8.3"
 	},
 	"scripts": {
-		"lint": "xo",
+		"lint": "standard",
 		"test": "yarn lint && ava",
 		"prepublish": "npm run test",
 		"coverage": "nyc --reporter=lcov --reporter=text-summary ava"
@@ -44,6 +44,6 @@
 	"devDependencies": {
 		"ava": "^2.4.0",
 		"nyc": "^15.0.0",
-		"xo": "^0.25.3"
+		"standard": "^14.3.1"
 	}
 }
