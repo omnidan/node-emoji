@@ -36,6 +36,7 @@
 		"ideograms"
 	],
 	"dependencies": {
+		"chalk": "^3.0.0",
 		"emoji.json": "^12.1.0",
 		"lodash": "^4.17.15",
 		"meow": "^6.0.0",
