@@ -17,5 +17,5 @@ const { input: args } = meow(`
 
 const cmd = emoji[_.first(args)]
 
-if (!cmd) console.log(chalk.red("Command not found!"))
+if (!cmd) console.log(chalk.red('Command not found!'))
 else console.log(cmd(..._.tail(args)))
