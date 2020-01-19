@@ -1,6 +1,5 @@
 'use strict'
 
-const _ = require('lodash')
 const { default: ow } = require('ow')
 
 const emojiData = require('emoji.json').map(({ name: key, char: emoji }) => [key, emoji])
@@ -22,7 +21,7 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
   ow(replacement, ow.any(ow.string, ow.function))
   ow(removeSpaces, ow.boolean)
 
-  const replaceFn = _.isFunction(replacement) ? replacement : () => replacement
+  const replaceFn = typeof replacement === 'function' ? replacement : () => replacement
 
   const chars = string.split('')
 
@@ -56,7 +55,7 @@ const core = {
 
     const res = inverted.get(emoji)
 
-    if (_.isUndefined(res)) {
+    if (res === undefined) {
       return null
     }
 
@@ -64,7 +63,7 @@ const core = {
   },
 
   random () {
-    const [key, emoji] = _.sample(emojiData)
+    const [key, emoji] = emojiData[Math.floor(Math.random() * emojiData.length)]
     return { key, emoji }
   },
 
@@ -83,7 +82,7 @@ const core = {
 
     const key = core.which(emoji)
 
-    if (_.isNull(key)) {
+    if (key === null) {
       return null
     }
 
@@ -104,7 +103,7 @@ const core = {
     return replace(string, '', { removeSpaces })
   },
 
-  emojify (string, { fallback = '', format = _.identity } = {}) {
+  emojify (string, { fallback = '', format = (value) => value } = {}) {
     ow(string, ow.string)
 
     return string

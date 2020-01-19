@@ -6,9 +6,6 @@
 	"author": "Daniel Bugl <daniel.bugl@touchlay.com>",
 	"license": "MIT",
 	"main": "index.js",
-	"bin": {
-		"emoji": "./cli"
-	},
 	"files": [
 		"index.js",
 		"index.d.ts",
@@ -36,10 +33,7 @@
 		"ideograms"
 	],
 	"dependencies": {
-		"chalk": "^3.0.0",
 		"emoji.json": "^12.1.0",
-		"lodash": "^4.17.15",
-		"meow": "^6.0.0",
 		"ow": "^0.15.0"
 	},
 	"devDependencies": {

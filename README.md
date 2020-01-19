@@ -65,7 +65,7 @@ Replace the emojis in a string.
 
 Remove all of the emojis from a string.
 
-### emojify(string, { fallback = "", format = _.identity })
+### emojify(string, { fallback = "", format = (value) => value })
 
 Parse all markdown-encoded emojis in a string.
 
