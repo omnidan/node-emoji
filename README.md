@@ -1,4 +1,4 @@
-# Emoji [![Travis CI Build Status](https://img.shields.io/travis/com/omnidan/node-emoji/master.svg?style=for-the-badge)](https://travis-ci.com/omnidan/node-emoji)
+# Emoji [![Travis CI Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=for-the-badge)](https://travis-ci.org/omnidan/node-emoji)
 
 Simple emoji support for Node.js.
 
