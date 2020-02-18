@@ -23,7 +23,7 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
 
   const replaceFn = typeof replacement === 'function' ? replacement : () => replacement
 
-  const chars = string.split('')
+  const chars = [...string]
 
   return chars
     .map((char, i) => {
@@ -123,8 +123,7 @@ const core = {
   unemojify (string) {
     ow(string, ow.string)
 
-    return string
-      .split('')
+    return [...string]
       .map(char => core.which(char, { markdown: true }) || char)
       .join('')
   }

@@ -26,7 +26,7 @@ test('random', t => {
 
 test('replace', t => {
   t.is(emoji.replace('a ☕ c', 'b'), 'a b c')
-  t.is(emoji.replace('a ☕ c', () => 'b'), 'a b c')
+  t.is(emoji.replace('a 🌭 c', () => 'b'), 'a b c')
 })
 
 test('strip', t => {
@@ -41,6 +41,7 @@ test('emojify', t => {
 
 test('unemojify', t => {
   t.is(emoji.unemojify('a ☕ c'), 'a :hot beverage: c')
+  t.is(emoji.unemojify('a ☕ 🌭 c'), 'a :hot beverage: :hot dog: c')
 })
 
 test('search', t => {
