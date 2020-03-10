@@ -35,7 +35,8 @@
 		"char-regex": "^1.0.2",
 		"emoji-regex": "^8.0.0",
 		"emojilib": "^2.4.0",
-		"ow": "^0.15.0"
+		"ow": "^0.15.0",
+		"skin-tone": "^2.0.0"
 	},
 	"devDependencies": {
 		"ava": "^2.4.0",

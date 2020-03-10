@@ -9,6 +9,7 @@ test('get', t => {
 test('which', t => {
   t.is(emoji.which('☕'), 'coffee')
   t.is(emoji.which('☕', { markdown: true }), ':coffee:')
+  t.is(emoji.which('👍🏾'), '+1')
 })
 
 test('has', t => {

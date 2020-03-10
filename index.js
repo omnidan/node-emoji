@@ -4,6 +4,8 @@ const { default: ow } = require('ow')
 const charRegex = require('char-regex')()
 const emojiRegex = require('emoji-regex')()
 
+const skinTone = require('skin-tone')
+
 const emojiData = Object.entries(require('emojilib').lib).map(([key, { char: emoji }]) => [key, emoji])
 
 const emoji = new Map(emojiData)
@@ -54,7 +56,7 @@ const core = {
     ow(emoji, ow.string)
     ow(markdown, ow.boolean)
 
-    const res = inverted.get(emoji)
+    const res = inverted.get(skinTone(emoji, 'none'))
 
     if (res === undefined) {
       return undefined
