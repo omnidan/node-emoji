@@ -10,10 +10,10 @@ declare type replaceCallback<T = any> = (emoji: string, i: number, string: T) =>
 
 declare const emoji: {
 	/** Get an emoji from an emoji name. */
-	get(key: string): string | null
+	get(key: string): string | undefined
 
 	/** Get an emoji name from an emoji. */
-	which(emoji: string): string | null
+	which(emoji: string): string | undefined
 
 	/** Get a random emoji. */
 	random(): string
@@ -22,7 +22,7 @@ declare const emoji: {
 	search(key: string): EmojiData[]
 
 	/** Get the data for an emoji. */
-	find(emoji: string): EmojiData | null
+	find(emoji: string): EmojiData | undefined
 
 	/** Check if this library supports a specific emoji. */
 	has(key: string): boolean

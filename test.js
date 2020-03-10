@@ -50,7 +50,7 @@ test('search', t => {
 
 test('find', t => {
   t.deepEqual(emoji.find('💯'), { key: '100', emoji: '💯' })
-  t.is(emoji.find('a'), null)
+  t.is(emoji.find('a'), undefined)
 })
 
 test('findAll', t => {
