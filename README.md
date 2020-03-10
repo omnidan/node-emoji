@@ -15,14 +15,14 @@ npm install node-emoji
 ```js
 const emoji = require("node-emoji");
 
-emoji.get("hot beverage");
+emoji.get("coffee");
 //=> ☕️
 
-emoji.get(":hot beverage:");
+emoji.get(":coffee:");
 //=> ☕️
 
 emoji.which("☕️");
-//=> "hot beverage"
+//=> "coffee"
 
 emoji.emojify("I :heart: :coffee:!");
 //=> "I ❤️ ☕️!"
@@ -72,3 +72,7 @@ Parse all markdown-encoded emojis in a string.
 ### unemojify(string)
 
 Convert all emojis in a string to their markdown-encoded counterparts.
+
+### findAll(string)
+
+Find all the emojis in a string.

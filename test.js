@@ -2,19 +2,19 @@ import test from 'ava'
 import emoji from '.'
 
 test('get', t => {
-  t.is(emoji.get('hot beverage'), '☕')
-  t.is(emoji.get(':hot beverage:'), '☕')
+  t.is(emoji.get('coffee'), '☕')
+  t.is(emoji.get(':coffee:'), '☕')
 })
 
 test('which', t => {
-  t.is(emoji.which('☕'), 'hot beverage')
-  t.is(emoji.which('☕', { markdown: true }), ':hot beverage:')
+  t.is(emoji.which('☕'), 'coffee')
+  t.is(emoji.which('☕', { markdown: true }), ':coffee:')
 })
 
 test('has', t => {
   t.true(emoji.has('☕'))
-  t.true(emoji.has('hot beverage'))
-  t.true(emoji.has(':hot beverage:'))
+  t.true(emoji.has('coffee'))
+  t.true(emoji.has(':coffee:'))
   t.false(emoji.has('idontexist'))
 })
 
@@ -35,20 +35,37 @@ test('strip', t => {
 })
 
 test('emojify', t => {
-  t.is(emoji.emojify('a :hot beverage: c'), 'a ☕ c')
-  t.is(emoji.emojify('a :hot beverage: c :idontexist: d'), 'a ☕ c  d')
+  t.is(emoji.emojify('a :coffee: c'), 'a ☕ c')
+  t.is(emoji.emojify('a :coffee: c :idontexist: d'), 'a ☕ c  d')
 })
 
 test('unemojify', t => {
-  t.is(emoji.unemojify('a ☕ c'), 'a :hot beverage: c')
-  t.is(emoji.unemojify('a ☕ 🌭 c'), 'a :hot beverage: :hot dog: c')
+  t.is(emoji.unemojify('a ☕ c'), 'a :coffee: c')
+  t.is(emoji.unemojify('a ☕ 🌭 c'), 'a :coffee: :hotdog: c')
 })
 
 test('search', t => {
-  t.deepEqual(emoji.search('hundred'), [{ key: 'hundred points', emoji: '💯' }])
+  t.deepEqual(emoji.search('100'), [{ key: '100', emoji: '💯' }])
 })
 
 test('find', t => {
-  t.deepEqual(emoji.find('💯'), { key: 'hundred points', emoji: '💯' })
+  t.deepEqual(emoji.find('💯'), { key: '100', emoji: '💯' })
   t.is(emoji.find('a'), null)
+})
+
+test('findAll', t => {
+  t.deepEqual(emoji.findAll('I :heart: ☕ and :pizza:!'), [
+    {
+      emoji: '❤️',
+      key: 'heart'
+    },
+    {
+      emoji: '☕',
+      key: 'coffee'
+    },
+    {
+      emoji: '🍕',
+      key: 'pizza'
+    }
+  ])
 })

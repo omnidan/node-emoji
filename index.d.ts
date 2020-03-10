@@ -56,6 +56,9 @@ declare const emoji: {
 
 	/** Convert all emojis in a string to their markdown-encoded counterparts. */
 	unemojify(string: string): string
+
+	/** Find all the emojis in a string. */
+	findAll(string: string): EmojiData[]
 }
 
 export = emoji
