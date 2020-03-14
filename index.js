@@ -29,7 +29,7 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
   const chars = string.match(charRegex)
 
   if (chars === null) {
-    return string;
+    return string
   }
 
   return chars
