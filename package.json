@@ -23,7 +23,7 @@
     "url": "https://github.com/omnidan/node-emoji/issues"
   },
   "dependencies": {
-    "lodash.toarray": "^4.4.0"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "istanbul": "^0.4.5",
