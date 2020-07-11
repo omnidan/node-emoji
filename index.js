@@ -125,7 +125,7 @@ exports.emojify = (string, { fallback = '', format = (value) => value } = {}) =>
     .join('')
 }
 
-exports.unemojify = (string) => {
+exports.unemojify = string => {
   ow(string, ow.string)
 
   return string.match(charRegex)
@@ -133,6 +133,6 @@ exports.unemojify = (string) => {
     .join('')
 }
 
-exports.findAll = (string) => {
+exports.findAll = string => {
   return exports.emojify(string).match(emojiRegex).map(char => exports.find(char))
 }
