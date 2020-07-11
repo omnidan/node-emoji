@@ -36,6 +36,7 @@
     "emoji-regex": "^8.0.0",
     "emojilib": "^2.4.0",
     "ow": "^0.15.0",
+    "random-item": "^3.0.0",
     "skin-tone": "^2.0.0"
   },
   "devDependencies": {

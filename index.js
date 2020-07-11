@@ -3,6 +3,7 @@
 const { default: ow } = require('ow')
 const charRegex = require('char-regex')()
 const emojiRegex = require('emoji-regex')()
+const randomItem = require('random-item')
 
 const skinTone = require('skin-tone')
 
@@ -69,7 +70,7 @@ exports.which = (emoji, { markdown = false } = {}) => {
 }
 
 exports.random = () => {
-  const [key, emoji] = emojiData[Math.floor(Math.random() * emojiData.length)]
+  const [key, emoji] = randomItem(emojiData)
   return { key, emoji }
 }
 
