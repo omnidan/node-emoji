@@ -25,27 +25,27 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
   ow(replacement, ow.any(ow.string, ow.function))
   ow(removeSpaces, ow.boolean)
 
-  const replaceFn = typeof replacement === 'function' ? replacement : () => replacement
+  const replaceFunction = typeof replacement === 'function' ? replacement : () => replacement
 
-  const chars = string.match(charRegex)
+  const characters = string.match(charRegex)
 
-  if (chars === null) {
+  if (characters === null) {
     return string
   }
 
-  return chars
-    .map((char, i) => {
-      const emoji = exports.which(char)
+  return characters
+    .map((character, index) => {
+      const emoji = exports.which(character)
 
       if (!emoji) {
-        return char
+        return character
       }
 
-      if (removeSpaces && chars[i + 1] === ' ') {
-        chars[i + 1] = ''
+      if (removeSpaces && characters[index + 1] === ' ') {
+        characters[index + 1] = ''
       }
 
-      return replaceFn(emoji, i, string)
+      return replaceFunction(emoji, index, string)
     })
     .join('')
 }
@@ -60,13 +60,13 @@ exports.which = (emoji, { markdown = false } = {}) => {
   ow(emoji, ow.string)
   ow(markdown, ow.boolean)
 
-  const res = inverted.get(skinTone(emoji, 'none'))
+  const result = inverted.get(skinTone(emoji, 'none'))
 
-  if (res === undefined) {
+  if (result === undefined) {
     return undefined
   }
 
-  return markdown ? `:${res}:` : res
+  return markdown ? `:${result}:` : result
 }
 
 exports.random = () => {
@@ -115,13 +115,13 @@ exports.emojify = (string, { fallback = '', format = (value) => value } = {}) =>
 
   return string
     .split(/:([a-zA-Z0-9_\-+ ]+):/g)
-    .map((str, i) => {
-      if (i % 2 === 0) {
-        return str
+    .map((part, index) => {
+      if (index % 2 === 0) {
+        return part
       }
 
-      const emoji = exports.get(str)
-      return emoji ? format(emoji, str, string) : fallback
+      const emoji = exports.get(part)
+      return emoji ? format(emoji, part, string) : fallback
     })
     .join('')
 }
@@ -130,10 +130,10 @@ exports.unemojify = string => {
   ow(string, ow.string)
 
   return string.match(charRegex)
-    .map(char => exports.which(char, { markdown: true }) || char)
+    .map(character => exports.which(character, { markdown: true }) || character)
     .join('')
 }
 
 exports.findAll = string => {
-  return exports.emojify(string).match(emojiRegex).map(char => exports.find(char))
+  return exports.emojify(string).match(emojiRegex).map(character => exports.find(character))
 }
