@@ -102,13 +102,9 @@ exports.has = key => {
   return emoji.has(normalizeName(key)) || inverted.has(key)
 }
 
-exports.replace = (string, replacement) => {
-  return replace(string, replacement)
-}
+exports.replace = (string, replacement) => replace(string, replacement)
 
-exports.strip = (string, { removeSpaces = true } = {}) => {
-  return replace(string, '', { removeSpaces })
-}
+exports.strip = (string, { removeSpaces = true } = {}) => replace(string, '', { removeSpaces })
 
 exports.emojify = (string, { fallback = '', format = (value) => value } = {}) => {
   ow(string, ow.string)
@@ -134,6 +130,4 @@ exports.unemojify = string => {
     .join('')
 }
 
-exports.findAll = string => {
-  return exports.emojify(string).match(emojiRegex).map(character => exports.find(character))
-}
+exports.findAll = string => exports.emojify(string).match(emojiRegex).map(character => exports.find(character))
