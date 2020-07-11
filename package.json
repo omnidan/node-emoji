@@ -1,46 +1,46 @@
 {
-	"name": "node-emoji",
-	"version": "2.0.0",
-	"description": "Simple emoji support for Node.js.",
-	"repository": "https://github.com/omnidan/node-emoji.git",
-	"author": "Daniel Bugl <daniel.bugl@touchlay.com>",
-	"license": "MIT",
-	"main": "index.js",
-	"files": [
-		"index.js",
-		"index.d.ts"
-	],
-	"engines": {
-		"node": ">=10"
-	},
-	"scripts": {
-		"lint": "standard",
-		"test": "yarn lint && ava",
-		"prepublish": "npm run test",
-		"coverage": "nyc --reporter=lcov --reporter=text-summary ava"
-	},
-	"keywords": [
-		"emoji",
-		"simple",
-		"emoticons",
-		"emoticon",
-		"emojis",
-		"smiley",
-		"smileys",
-		"smilies",
-		"ideogram",
-		"ideograms"
-	],
-	"dependencies": {
-		"char-regex": "^1.0.2",
-		"emoji-regex": "^8.0.0",
-		"emojilib": "^2.4.0",
-		"ow": "^0.15.0",
-		"skin-tone": "^2.0.0"
-	},
-	"devDependencies": {
-		"ava": "^2.4.0",
-		"nyc": "^15.0.0",
-		"standard": "^14.3.1"
-	}
+  "name": "node-emoji",
+  "version": "2.0.0",
+  "description": "Simple emoji support for Node.js.",
+  "repository": "https://github.com/omnidan/node-emoji.git",
+  "author": "Daniel Bugl <daniel.bugl@touchlay.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "lint": "standard",
+    "test": "standard && ava",
+    "prepublishOnly": "standard && ava",
+    "coverage": "nyc --reporter=lcov --reporter=text-summary ava"
+  },
+  "keywords": [
+    "emoji",
+    "simple",
+    "emoticons",
+    "emoticon",
+    "emojis",
+    "smiley",
+    "smileys",
+    "smilies",
+    "ideogram",
+    "ideograms"
+  ],
+  "dependencies": {
+    "char-regex": "^1.0.2",
+    "emoji-regex": "^8.0.0",
+    "emojilib": "^2.4.0",
+    "ow": "^0.15.0",
+    "skin-tone": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "^2.4.0",
+    "nyc": "^15.0.0",
+    "standard": "^14.3.1"
+  }
 }
