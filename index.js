@@ -1,10 +1,9 @@
 'use strict'
 
-const { default: ow } = require('ow')
+const ow = require('ow')
 const charRegex = require('char-regex')()
 const emojiRegex = require('emoji-regex')()
 const randomItem = require('random-item')
-
 const skinTone = require('skin-tone')
 
 const emojiData = Object.entries(require('emojilib').lib).map(([key, { char: emoji }]) => [key, emoji])
