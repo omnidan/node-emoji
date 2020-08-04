@@ -12,7 +12,7 @@ const emojiData = Object.entries(require('unicode-emoji-json')).map(([emoji, { n
 const emoji = new Map(emojiData)
 const inverted = new Map(emojiData.map(([name, emoji]) => ([emoji, name])))
 
-function normalizeName(name) {
+function normalizeName (name) {
   if (/:.+:/.test(name)) {
     name = name.slice(1, -1)
   }
@@ -20,17 +20,17 @@ function normalizeName(name) {
   return name
 }
 
-function replace(string, replacement, { removeSpaces = false } = {}) {
-  assert.string(string)
+function replace (input, replacement, { removeSpaces = false } = {}) {
+  assert.string(input)
   assert.any([is.string, is.function], replacement)
   assert.boolean(removeSpaces)
 
   const replaceFunction = typeof replacement === 'function' ? replacement : () => replacement
 
-  const characters = string.match(charRegex)
+  const characters = input.match(charRegex)
 
   if (characters === null) {
-    return string
+    return input
   }
 
   return characters
@@ -45,7 +45,7 @@ function replace(string, replacement, { removeSpaces = false } = {}) {
         characters[index + 1] = ''
       }
 
-      return replaceFunction(emoji, index, string)
+      return replaceFunction(emoji, index, input)
     })
     .join('')
 }
@@ -102,14 +102,14 @@ exports.has = name => {
   return emoji.has(normalizeName(name)) || inverted.has(name)
 }
 
-exports.replace = (string, replacement) => replace(string, replacement)
+exports.replace = (input, replacement) => replace(input, replacement)
 
-exports.strip = (string, { removeSpaces = true } = {}) => replace(string, '', { removeSpaces })
+exports.strip = (input, { removeSpaces = true } = {}) => replace(input, '', { removeSpaces })
 
-exports.emojify = (string, { fallback = '', format = (value) => value } = {}) => {
-  assert.string(string)
+exports.emojify = (input, { fallback = '', format = (value) => value } = {}) => {
+  assert.string(input)
 
-  return string
+  return input
     .split(/:([a-zA-Z0-9_\-+ ]+):/g)
     .map((part, index) => {
       if (index % 2 === 0) {
@@ -117,17 +117,17 @@ exports.emojify = (string, { fallback = '', format = (value) => value } = {}) =>
       }
 
       const emoji = exports.get(part)
-      return emoji ? format(emoji, part, string) : fallback
+      return emoji ? format(emoji, part, input) : fallback
     })
     .join('')
 }
 
-exports.unemojify = string => {
-  assert.string(string)
+exports.unemojify = input => {
+  assert.string(input)
 
-  return string.match(charRegex)
+  return input.match(charRegex)
     .map(character => exports.which(character, { markdown: true }) || character)
     .join('')
 }
 
-exports.findAll = string => exports.emojify(string).match(emojiRegex).map(character => exports.find(character))
+exports.findAll = input => exports.emojify(input).match(emojiRegex).map(character => exports.find(character))

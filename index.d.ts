@@ -28,10 +28,10 @@ declare const emoji: {
   has(name: string): boolean
 
   /** Replace the emojis in a string. */
-  replace<T extends string>(string: T, replacement: string | replaceCallback<T>): string
+  replace<T extends string>(input: T, replacement: string | replaceCallback<T>): string
 
   /** Remove all of the emojis from a string. */
-  strip(string: string, options?: {
+  strip(input: string, options?: {
     /**
      * Automatically remove the space after a stripped emoji.
      * @default true
@@ -40,7 +40,7 @@ declare const emoji: {
   }): string
 
   /** Parse all markdown-encoded emojis in a string. */
-  emojify<T extends string>(string: T, options?: {
+  emojify<T extends string>(input: T, options?: {
     /**
      * The string to fallback to if an emoji was not found.
      * @default ''
@@ -55,10 +55,10 @@ declare const emoji: {
   }): string
 
   /** Convert all emojis in a string to their markdown-encoded counterparts. */
-  unemojify(string: string): string
+  unemojify(input: string): string
 
   /** Find all the emojis in a string. */
-  findAll(string: string): EmojiData[]
+  findAll(input: string): EmojiData[]
 }
 
 export = emoji

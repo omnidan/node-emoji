@@ -57,22 +57,22 @@ Get the data for an emoji.
 
 Check if this library supports a specific emoji.
 
-### replace(string, replacement)
+### replace(input, replacement)
 
 Replace the emojis in a string.
 
-### strip(string, { removeSpaces = true })
+### strip(input, { removeSpaces = true })
 
 Remove all of the emojis from a string.
 
-### emojify(string, { fallback = "", format = (value) => value })
+### emojify(input, { fallback = "", format = (value) => value })
 
 Parse all markdown-encoded emojis in a string.
 
-### unemojify(string)
+### unemojify(input)
 
 Convert all emojis in a string to their markdown-encoded counterparts.
 
-### findAll(string)
+### findAll(input)
 
 Find all the emojis in a string.
