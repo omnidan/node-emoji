@@ -15,16 +15,16 @@ npm install node-emoji
 ```js
 const emoji = require("node-emoji");
 
-emoji.get("coffee");
+emoji.get("hot_beverage");
 //=> ☕️
 
-emoji.get(":coffee:");
+emoji.get(":hot_beverage:");
 //=> ☕️
 
 emoji.which("☕️");
-//=> "coffee"
+//=> "hot_beverage"
 
-emoji.emojify("I :heart: :coffee:!");
+emoji.emojify("I :heart: :hot_beverage:!");
 //=> "I ❤️ ☕️!"
 
 emoji.random();

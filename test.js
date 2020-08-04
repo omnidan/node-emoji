@@ -2,20 +2,20 @@ import test from 'ava'
 import emoji from '.'
 
 test('get', t => {
-  t.is(emoji.get('coffee'), '☕')
-  t.is(emoji.get(':coffee:'), '☕')
+  t.is(emoji.get('hot_beverage'), '☕')
+  t.is(emoji.get(':hot_beverage:'), '☕')
 })
 
 test('which', t => {
-  t.is(emoji.which('☕'), 'coffee')
-  t.is(emoji.which('☕', { markdown: true }), ':coffee:')
-  t.is(emoji.which('👍🏾'), '+1')
+  t.is(emoji.which('☕'), 'hot_beverage')
+  t.is(emoji.which('☕', { markdown: true }), ':hot_beverage:')
+  t.is(emoji.which('👍🏾'), 'thumbs_up')
 })
 
 test('has', t => {
   t.true(emoji.has('☕'))
-  t.true(emoji.has('coffee'))
-  t.true(emoji.has(':coffee:'))
+  t.true(emoji.has('hot_beverage'))
+  t.true(emoji.has(':hot_beverage:'))
   t.false(emoji.has('idontexist'))
 })
 
@@ -36,33 +36,33 @@ test('strip', t => {
 })
 
 test('emojify', t => {
-  t.is(emoji.emojify('a :coffee: c'), 'a ☕ c')
-  t.is(emoji.emojify('a :coffee: c :idontexist: d'), 'a ☕ c  d')
+  t.is(emoji.emojify('a :hot_beverage: c'), 'a ☕ c')
+  t.is(emoji.emojify('a :hot_beverage: c :idontexist: d'), 'a ☕ c  d')
 })
 
 test('unemojify', t => {
-  t.is(emoji.unemojify('a ☕ c'), 'a :coffee: c')
-  t.is(emoji.unemojify('a ☕ 🌭 c'), 'a :coffee: :hotdog: c')
+  t.is(emoji.unemojify('a ☕ c'), 'a :hot_beverage: c')
+  t.is(emoji.unemojify('a ☕ 🌭 c'), 'a :hot_beverage: :hot_dog: c')
 })
 
 test('search', t => {
-  t.deepEqual(emoji.search('100'), [{ key: '100', emoji: '💯' }])
+  t.deepEqual(emoji.search('hundred_points'), [{ key: 'hundred_points', emoji: '💯' }])
 })
 
 test('find', t => {
-  t.deepEqual(emoji.find('💯'), { key: '100', emoji: '💯' })
+  t.deepEqual(emoji.find('💯'), { key: 'hundred_points', emoji: '💯' })
   t.is(emoji.find('a'), undefined)
 })
 
 test('findAll', t => {
-  t.deepEqual(emoji.findAll('I :heart: ☕ and :pizza:!'), [
+  t.deepEqual(emoji.findAll('I :red_heart: ☕ and :pizza:!'), [
     {
       emoji: '❤️',
-      key: 'heart'
+      key: 'red_heart'
     },
     {
       emoji: '☕',
-      key: 'coffee'
+      key: 'hot_beverage'
     },
     {
       emoji: '🍕',
