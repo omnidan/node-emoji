@@ -49,10 +49,10 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
     .join('')
 }
 
-exports.get = key => {
-  ow(key, ow.string)
+exports.get = name => {
+  ow(name, ow.string)
 
-  return emoji.get(normalizeName(key))
+  return emoji.get(normalizeName(name))
 }
 
 exports.which = (emoji, { markdown = false } = {}) => {
@@ -69,36 +69,36 @@ exports.which = (emoji, { markdown = false } = {}) => {
 }
 
 exports.random = () => {
-  const [key, emoji] = randomItem(emojiData)
-  return { key, emoji }
+  const [name, emoji] = randomItem(emojiData)
+  return { name, emoji }
 }
 
-exports.search = key => {
-  ow(key, ow.string)
+exports.search = keyword => {
+  ow(keyword, ow.string)
 
-  key = normalizeName(key)
+  keyword = normalizeName(keyword)
 
   return emojiData
-    .filter(([name]) => name.includes(key))
-    .map(([key, emoji]) => ({ key, emoji }))
+    .filter(([name]) => name.includes(keyword))
+    .map(([name, emoji]) => ({ name, emoji }))
 }
 
 exports.find = emoji => {
   ow(emoji, ow.string)
 
-  const key = exports.which(emoji)
+  const name = exports.which(emoji)
 
-  if (key === undefined) {
+  if (name === undefined) {
     return undefined
   }
 
-  return { key, emoji }
+  return { name, emoji }
 }
 
-exports.has = key => {
-  ow(key, ow.string)
+exports.has = name => {
+  ow(name, ow.string)
 
-  return emoji.has(normalizeName(key)) || inverted.has(key)
+  return emoji.has(normalizeName(name)) || inverted.has(name)
 }
 
 exports.replace = (string, replacement) => replace(string, replacement)

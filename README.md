@@ -28,12 +28,12 @@ emoji.emojify("I :heart: :hot_beverage:!");
 //=> "I ❤️ ☕️!"
 
 emoji.random();
-//=> { key: 'house', emoji: '🏠' }
+//=> { name: 'house', emoji: '🏠' }
 ```
 
 ## API
 
-### get(key)
+### get(name)
 
 Get an emoji from an emoji name.
 
@@ -45,15 +45,15 @@ Get an emoji name from an emoji.
 
 Get a random emoji.
 
-### search(key)
+### search(keyword)
 
-Search for emojis containing the provided key in their name.
+Search for emojis containing the provided name in their name.
 
 ### find(emoji)
 
 Get the data for an emoji.
 
-### has(key)
+### has(name)
 
 Check if this library supports a specific emoji.
 

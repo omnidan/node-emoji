@@ -21,7 +21,7 @@ test('has', t => {
 
 test('random', t => {
   const data = emoji.random()
-  t.true(emoji.has(data.key))
+  t.true(emoji.has(data.name))
   t.true(emoji.has(data.emoji))
 })
 
@@ -46,11 +46,11 @@ test('unemojify', t => {
 })
 
 test('search', t => {
-  t.deepEqual(emoji.search('hundred_points'), [{ key: 'hundred_points', emoji: '💯' }])
+  t.deepEqual(emoji.search('hundred_points'), [{ name: 'hundred_points', emoji: '💯' }])
 })
 
 test('find', t => {
-  t.deepEqual(emoji.find('💯'), { key: 'hundred_points', emoji: '💯' })
+  t.deepEqual(emoji.find('💯'), { name: 'hundred_points', emoji: '💯' })
   t.is(emoji.find('a'), undefined)
 })
 
@@ -58,15 +58,15 @@ test('findAll', t => {
   t.deepEqual(emoji.findAll('I :red_heart: ☕ and :pizza:!'), [
     {
       emoji: '❤️',
-      key: 'red_heart'
+      name: 'red_heart'
     },
     {
       emoji: '☕',
-      key: 'hot_beverage'
+      name: 'hot_beverage'
     },
     {
       emoji: '🍕',
-      key: 'pizza'
+      name: 'pizza'
     }
   ])
 })
