@@ -6,10 +6,10 @@ const emojiRegex = require('emoji-regex')()
 const randomItem = require('random-item')
 const skinTone = require('skin-tone')
 
-const emojiData = Object.entries(require('emojilib').lib).map(([key, { char: emoji }]) => [key, emoji])
+const emojiData = Object.entries(require('unicode-emoji-json')).map(([emoji, { name }]) => [name, emoji])
 
 const emoji = new Map(emojiData)
-const inverted = new Map(emojiData.map(([key, emoji]) => ([emoji, key])))
+const inverted = new Map(emojiData.map(([name, emoji]) => ([emoji, name])))
 
 function normalizeName (name) {
   if (/:.+:/.test(name)) {
