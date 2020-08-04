@@ -1,17 +1,18 @@
 'use strict'
 
-const ow = require('ow')
 const charRegex = require('char-regex')()
 const emojiRegex = require('emoji-regex')()
 const randomItem = require('random-item')
 const skinTone = require('skin-tone')
+const is = require('@sindresorhus/is')
+const { assert } = is
 
 const emojiData = Object.entries(require('unicode-emoji-json')).map(([emoji, { name }]) => [name, emoji])
 
 const emoji = new Map(emojiData)
 const inverted = new Map(emojiData.map(([name, emoji]) => ([emoji, name])))
 
-function normalizeName (name) {
+function normalizeName(name) {
   if (/:.+:/.test(name)) {
     name = name.slice(1, -1)
   }
@@ -19,10 +20,10 @@ function normalizeName (name) {
   return name
 }
 
-function replace (string, replacement, { removeSpaces = false } = {}) {
-  ow(string, ow.string)
-  ow(replacement, ow.any(ow.string, ow.function))
-  ow(removeSpaces, ow.boolean)
+function replace(string, replacement, { removeSpaces = false } = {}) {
+  assert.string(string)
+  assert.any([is.string, is.function], replacement)
+  assert.boolean(removeSpaces)
 
   const replaceFunction = typeof replacement === 'function' ? replacement : () => replacement
 
@@ -50,14 +51,14 @@ function replace (string, replacement, { removeSpaces = false } = {}) {
 }
 
 exports.get = name => {
-  ow(name, ow.string)
+  assert.string(name)
 
   return emoji.get(normalizeName(name))
 }
 
 exports.which = (emoji, { markdown = false } = {}) => {
-  ow(emoji, ow.string)
-  ow(markdown, ow.boolean)
+  assert.string(emoji)
+  assert.boolean(markdown)
 
   const result = inverted.get(skinTone(emoji, 'none'))
 
@@ -74,7 +75,7 @@ exports.random = () => {
 }
 
 exports.search = keyword => {
-  ow(keyword, ow.string)
+  assert.string(keyword)
 
   keyword = normalizeName(keyword)
 
@@ -84,7 +85,7 @@ exports.search = keyword => {
 }
 
 exports.find = emoji => {
-  ow(emoji, ow.string)
+  assert.string(emoji)
 
   const name = exports.which(emoji)
 
@@ -96,7 +97,7 @@ exports.find = emoji => {
 }
 
 exports.has = name => {
-  ow(name, ow.string)
+  assert.string(name)
 
   return emoji.has(normalizeName(name)) || inverted.has(name)
 }
@@ -106,7 +107,7 @@ exports.replace = (string, replacement) => replace(string, replacement)
 exports.strip = (string, { removeSpaces = true } = {}) => replace(string, '', { removeSpaces })
 
 exports.emojify = (string, { fallback = '', format = (value) => value } = {}) => {
-  ow(string, ow.string)
+  assert.string(string)
 
   return string
     .split(/:([a-zA-Z0-9_\-+ ]+):/g)
@@ -122,7 +123,7 @@ exports.emojify = (string, { fallback = '', format = (value) => value } = {}) =>
 }
 
 exports.unemojify = string => {
-  ow(string, ow.string)
+  assert.string(string)
 
   return string.match(charRegex)
     .map(character => exports.which(character, { markdown: true }) || character)
