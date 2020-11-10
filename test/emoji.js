@@ -179,9 +179,9 @@ describe("emoji.js", function () {
     })
 
     it("should leave unknown emoji", function () {
-      var coffee = emoji.unemojify('I ⭐️ :another_one: 🦢');
+      var coffee = emoji.unemojify('I ⭐️ :another_one: ��');
       should.exist(coffee);
-      coffee.should.be.exactly('I :star: :another_one: 🦢');
+      coffee.should.be.exactly('I :star: :another_one: ��');
     });
 
     it("should parse a complex emoji like woman-kiss-woman and replace it with :woman-kiss-woman:", function() {
@@ -252,6 +252,11 @@ describe("emoji.js", function () {
       var result = emoji.hasEmoji('🍕❤️‍💋‍☕');
       result.should.equal(false);
     });
+
+    it('Emoji 13.1', function() {
+      var result = emoji.hasEmoji('😮‍💨')
+      result.should.equal(true);
+    })
   });
 
   describe('replace', function() {
@@ -304,4 +309,5 @@ describe("emoji.js", function () {
       result.should.equal('Host: eseaps001 Addr: 10.XX.XX.XX: - low disk space');
     });
   });
+
 });
