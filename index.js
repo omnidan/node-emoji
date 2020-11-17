@@ -7,7 +7,7 @@ const skinTone = require('skin-tone')
 const is = require('@sindresorhus/is')
 const { assert } = is
 
-const emojiData = Object.entries(require('unicode-emoji-json')).map(([emoji, { name }]) => [name, emoji])
+const emojiData = Object.entries(require('emojilib').lib).map(([name, { char: emoji }]) => [name, emoji])
 
 const emoji = new Map(emojiData)
 const inverted = new Map(emojiData.map(([name, emoji]) => ([emoji, name])))
