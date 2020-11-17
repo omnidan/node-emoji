@@ -1,64 +1,202 @@
-declare interface EmojiData {
-  /** The emoji name. */
-  name: string
+declare namespace emoji {
+  export interface EmojiData {
+    /**
+    The emoji name.
+    */
+    name: string
 
-  /** The emoji. */
-  emoji: string
+    /**
+    The emoji.
+    */
+    emoji: string
+  }
 }
 
-declare type replaceCallback<T = any> = (emoji: string, index: number, string: T) => string
-
 declare const emoji: {
-  /** Get an emoji from an emoji name. */
+  /**
+  Get an emoji from an emoji name.
+  
+  @param name The name of the emoji to get.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.get('unicorn'))
+  //=> '🦄'
+  ```
+  */
   get(name: string): string | undefined
 
-  /** Get an emoji name from an emoji. */
+  /**
+  Get an emoji name from an emoji.
+
+  @param emoji The emoji to get the name of.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.which('🦄'))
+  //=> 'unicorn'
+  ```
+  */
   which(emoji: string): string | undefined
 
-  /** Get a random emoji. */
+  /**
+  Get a random emoji.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.random())
+  //=> { name: 'unicorn', emoji: '🦄' }
+  ```
+  */
   random(): string
 
-  /** Search for emojis containing the provided name in their name. */
-  search(keyword: string): EmojiData[]
+  /**
+  Search for emojis containing the provided name in their name.
 
-  /** Get the data for an emoji. */
-  find(emoji: string): EmojiData | undefined
+  @param keyword The keyword to search for.
 
-  /** Check if this library supports a specific emoji. */
-  has(name: string): boolean
+  @example
+  ```
+  const emoji = require('node-emoji')
 
-  /** Replace the emojis in a string. */
-  replace<T extends string>(input: T, replacement: string | replaceCallback<T>): string
+  console.log(emoji.search('honey'))
+  //=> [ { name: 'honeybee', emoji: '🐝' }, { name: 'honey_pot', emoji: '🍯' } ]
+  ```
+  */
+  search(keyword: string): emoji.EmojiData[]
 
-  /** Remove all of the emojis from a string. */
+  /**
+  Get the name and character of an emoji.
+
+  @param emoji The emoji to get the data of.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.find('🦄'))
+  //=> { name: 'unicorn', emoji: '🦄' }
+  ```
+  */
+  find(emoji: string): emoji.EmojiData | undefined
+
+  /**
+  Check if this library supports a specific emoji.
+
+  @param emoji The emoji to check.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.has('🦄'))
+  //=> true
+  ```
+  */
+  has(emoji: string): boolean
+
+  /**
+  Replace the emojis in a string.
+
+  @param input The input string.
+  @param replacement The character to replace the emoji with.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.replace('The 🦄 is a fictitious animal.', 'unicorn'))
+  //=> 'The unicorn is a fictitious animal.'
+  ```
+  */
+  replace<InputValueType extends string>(input: InputValueType, replacement: string | ((emoji: string, index: number, string: InputValueType) => string)): string
+
+  /**
+  Remove all of the emojis from a string.
+
+  @param input The input string to strip the emojis from.
+  
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.strip('🦄 The unicorn is a fictitious animal.'))
+  //=> emoji.strip('The unicorn is a fictitious animal.')
+  ```
+  */
   strip(input: string, options?: {
     /**
-     * Automatically remove the space after a stripped emoji.
-     * @default true
+    Automatically remove the extra space after a stripped emoji.
+
+    @default true
     */
     removeSpaces?: boolean
   }): string
 
-  /** Parse all markdown-encoded emojis in a string. */
-  emojify<T extends string>(input: T, options?: {
+  /**
+  Parse all markdown-encoded emojis in a string.
+
+  @param input The input string containing the markdown-encoding emojis.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.emojify('The :unicorn: is a fictitious animal.'))
+  //=> emoji.strip('The 🦄 is a fictitious animal.')
+  ```
+  */
+  emojify<InputValueType extends string>(input: InputValueType, options?: {
     /**
-     * The string to fallback to if an emoji was not found.
-     * @default ''
-     */
+    The string to fallback to if an emoji was not found.
+
+    @default ''
+    */
     fallback?: string
 
     /**
-     * Add a middleware layer to modify each matched emoji after parsing.
-     * @default (value) => value
+    Add a middleware layer to modify each matched emoji after parsing.
+    
+    @default value => value
     */
-    format?: (emoji: string, str: string, string: T) => string
+    format?: (emoji: string, part: string, string: InputValueType) => string
   }): string
 
-  /** Convert all emojis in a string to their markdown-encoded counterparts. */
+  /**
+  Convert all emojis in a string to their markdown-encoded counterparts.
+
+  @param input The input string containing the emojis.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.unemojify('The 🦄 is a fictitious animal.'))
+  //=> emoji.strip('The :unicorn: is a fictitious animal.')
+  ```
+  */
   unemojify(input: string): string
 
-  /** Find all the emojis in a string. */
-  findAll(input: string): EmojiData[]
+  /**
+  Find all of the emojis in a string.
+
+  @param input The input string containing the emojis to find.
+
+  @example
+  ```
+  const emoji = require('node-emoji')
+
+  console.log(emoji.findAll('The 🦄 is a fictitious animal. 🍕 is an italian food.'))
+  //=> [ { name: 'unicorn', emoji: '🦄' }, { name: 'pizza', emoji: '🍕' } ]
+  ```
+  */
+  findAll(input: string): emoji.EmojiData[]
 }
 
 export = emoji
