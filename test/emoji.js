@@ -303,5 +303,15 @@ describe("emoji.js", function () {
       var result = emoji.strip('Host: eseaps001 Addr: 10.XX.XX.XX: - ⚠️ 〰️ 〰️ low disk space');
       result.should.equal('Host: eseaps001 Addr: 10.XX.XX.XX: - low disk space');
     });
+
+    it('Should be able to strip only emojis names', function() {
+      var result = emoji.strip('I :love: cleaning', true);
+      result.should.equal('I  cleaning');
+    });
+
+    it('Should be able to strip all emojis names', function() {
+      var result = emoji.strip('I :heart: cleaning and :coffee:', true);
+      result.should.equal('I  cleaning and ');
+    });
   });
 });
