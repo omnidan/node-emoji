@@ -77,7 +77,10 @@ If you want to support node-emoji development, please consider donating (it help
 
  * Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
  * Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
+ 
+## Special Thanks
 
+... to Dan Perkins (@Aesth3tical) for sponsoring this project via [GitHub Sponsors](https://github.com/sponsors/omnidan)!
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji?ref=badge_large)
