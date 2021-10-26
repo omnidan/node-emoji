@@ -80,7 +80,7 @@ If you want to support node-emoji development, please consider donating (it help
  
 ## Special Thanks
 
-... to Dan Perkins (@Aesth3tical) for sponsoring this project via [GitHub Sponsors](https://github.com/sponsors/omnidan)!
+... to Anand Chowdhary (@AnandChowdhary) and his company Pabio (https://github.com/pabio) for sponsoring this project via [GitHub Sponsors](https://github.com/sponsors/omnidan)!
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji?ref=badge_large)
