@@ -3,12 +3,12 @@ declare namespace emoji {
     /**
     The emoji name.
     */
-    name: string
+    name: string;
 
     /**
     The emoji.
     */
-    emoji: string
+    emoji: string;
   }
 }
 
@@ -26,7 +26,7 @@ declare const emoji: {
   //=> '🦄'
   ```
   */
-  get(name: string): string | undefined
+  get(name: string): string | undefined;
 
   /**
   Get an emoji name from an emoji.
@@ -41,7 +41,7 @@ declare const emoji: {
   //=> 'unicorn'
   ```
   */
-  which(emoji: string): string | undefined
+  which(emoji: string): string | undefined;
 
   /**
   Get a random emoji.
@@ -54,7 +54,7 @@ declare const emoji: {
   //=> { name: 'unicorn', emoji: '🦄' }
   ```
   */
-  random(): string
+  random(): string;
 
   /**
   Search for emojis containing the provided name in their name.
@@ -69,7 +69,7 @@ declare const emoji: {
   //=> [ { name: 'honeybee', emoji: '🐝' }, { name: 'honey_pot', emoji: '🍯' } ]
   ```
   */
-  search(keyword: string): emoji.EmojiData[]
+  search(keyword: string): emoji.EmojiData[];
 
   /**
   Get the name and character of an emoji.
@@ -84,7 +84,7 @@ declare const emoji: {
   //=> { name: 'unicorn', emoji: '🦄' }
   ```
   */
-  find(emoji: string): emoji.EmojiData | undefined
+  find(emoji: string): emoji.EmojiData | undefined;
 
   /**
   Check if this library supports a specific emoji.
@@ -99,7 +99,7 @@ declare const emoji: {
   //=> true
   ```
   */
-  has(emoji: string): boolean
+  has(emoji: string): boolean;
 
   /**
   Replace the emojis in a string.
@@ -115,7 +115,12 @@ declare const emoji: {
   //=> 'The unicorn is a fictitious animal.'
   ```
   */
-  replace<InputValueType extends string>(input: InputValueType, replacement: string | ((emoji: string, index: number, string: InputValueType) => string)): string
+  replace<InputValueType extends string>(
+    input: InputValueType,
+    replacement:
+      | string
+      | ((emoji: string, index: number, string: InputValueType) => string)
+  ): string;
 
   /**
   Remove all of the emojis from a string.
@@ -130,14 +135,17 @@ declare const emoji: {
   //=> emoji.strip('The unicorn is a fictitious animal.')
   ```
   */
-  strip(input: string, options?: {
-    /**
+  strip(
+    input: string,
+    options?: {
+      /**
     Automatically remove the extra space after a stripped emoji.
 
     @default true
     */
-    removeSpaces?: boolean
-  }): string
+      preserveSpaces?: boolean;
+    }
+  ): string;
 
   /**
   Parse all markdown-encoded emojis in a string.
@@ -152,21 +160,24 @@ declare const emoji: {
   //=> emoji.strip('The 🦄 is a fictitious animal.')
   ```
   */
-  emojify<InputValueType extends string>(input: InputValueType, options?: {
-    /**
+  emojify<InputValueType extends string>(
+    input: InputValueType,
+    options?: {
+      /**
     The string to fallback to if an emoji was not found.
 
     @default ''
     */
-    fallback?: string
+      fallback?: string;
 
-    /**
+      /**
     Add a middleware layer to modify each matched emoji after parsing.
     
     @default value => value
     */
-    format?: (emoji: string, part: string, string: InputValueType) => string
-  }): string
+      format?: (emoji: string, part: string, string: InputValueType) => string;
+    }
+  ): string;
 
   /**
   Convert all emojis in a string to their markdown-encoded counterparts.
@@ -181,7 +192,7 @@ declare const emoji: {
   //=> emoji.strip('The :unicorn: is a fictitious animal.')
   ```
   */
-  unemojify(input: string): string
+  unemojify(input: string): string;
 
   /**
   Find all of the emojis in a string.
@@ -196,7 +207,7 @@ declare const emoji: {
   //=> [ { name: 'unicorn', emoji: '🦄' }, { name: 'pizza', emoji: '🍕' } ]
   ```
   */
-  findAll(input: string): emoji.EmojiData[]
-}
+  findAll(input: string): emoji.EmojiData[];
+};
 
-export = emoji
+export = emoji;

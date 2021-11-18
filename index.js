@@ -1,133 +1,155 @@
-'use strict'
+"use strict";
 
-const charRegex = require('char-regex')()
-const emojiRegex = require('emoji-regex')()
-const randomItem = require('random-item')
-const skinTone = require('skin-tone')
-const is = require('@sindresorhus/is')
-const { assert } = is
+const is = require("@sindresorhus/is");
+const charRegex = require("char-regex")();
+const emojilib = require("emojilib");
+const emojiRegex = require("emoji-regex")();
+const skinTone = require("skin-tone");
 
-const emojiData = Object.entries(require('emojilib').lib).map(([name, { char: emoji }]) => [name, emoji])
+const { assert } = is;
 
-const emoji = new Map(emojiData)
-const inverted = new Map(emojiData.map(([name, emoji]) => ([emoji, name])))
-
-function normalizeName (name) {
-  if (/:.+:/.test(name)) {
-    name = name.slice(1, -1)
-  }
-
-  return name
+function randomItem(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
-function replace (input, replacement, { removeSpaces = false } = {}) {
-  assert.string(input)
-  assert.any([is.string, is.function], replacement)
-  assert.boolean(removeSpaces)
+const emojiData = Object.entries(emojilib.lib).map(
+  ([name, { char: emoji }]) => [name, emoji]
+);
 
-  const replaceFunction = typeof replacement === 'function' ? replacement : () => replacement
+const emojiEntries = new Map(emojiData);
+const emojiEntriesInverted = new Map(
+  emojiData.map(([name, emoji]) => [emoji, name])
+);
 
-  const characters = input.match(charRegex)
+function normalizeName(name) {
+  if (/:.+:/.test(name)) {
+    name = name.slice(1, -1);
+  }
+
+  return name;
+}
+
+function replace(input, replacement, { preserveSpaces = false } = {}) {
+  assert.string(input);
+  assert.any([is.string, is.function], replacement);
+  assert.boolean(preserveSpaces);
+
+  const replaceFunction =
+    typeof replacement === "function" ? replacement : () => replacement;
+
+  const characters = input.match(charRegex);
 
   if (characters === null) {
-    return input
+    return input;
   }
 
   return characters
     .map((character, index) => {
-      const emoji = exports.which(character)
+      const emoji = exports.which(character);
 
       if (!emoji) {
-        return character
+        return character;
       }
 
-      if (removeSpaces && characters[index + 1] === ' ') {
-        characters[index + 1] = ''
+      if (!preserveSpaces && characters[index + 1] === " ") {
+        characters[index + 1] = "";
       }
 
-      return replaceFunction(emoji, index, input)
+      return replaceFunction(emoji, index, input);
     })
-    .join('')
+    .join("");
 }
 
-exports.get = name => {
-  assert.string(name)
+exports.get = (name) => {
+  assert.string(name);
 
-  return emoji.get(normalizeName(name))
-}
+  return emojiEntries.get(normalizeName(name));
+};
 
 exports.which = (emoji, { markdown = false } = {}) => {
-  assert.string(emoji)
-  assert.boolean(markdown)
+  assert.string(emoji);
+  assert.boolean(markdown);
 
-  const result = inverted.get(skinTone(emoji, 'none'))
+  const result = emojiEntriesInverted.get(skinTone(emoji, "none"));
 
   if (result === undefined) {
-    return undefined
+    return undefined;
   }
 
-  return markdown ? `:${result}:` : result
-}
+  return markdown ? `:${result}:` : result;
+};
 
 exports.random = () => {
-  const [name, emoji] = randomItem(emojiData)
-  return { name, emoji }
-}
+  const [name, emoji] = randomItem(emojiData);
+  return { name, emoji };
+};
 
-exports.search = keyword => {
-  assert.string(keyword)
+exports.search = (keyword) => {
+  assert.string(keyword);
 
-  keyword = normalizeName(keyword)
+  keyword = normalizeName(keyword);
 
   return emojiData
     .filter(([name]) => name.includes(keyword))
-    .map(([name, emoji]) => ({ name, emoji }))
-}
+    .map(([name, emoji]) => ({ name, emoji }));
+};
 
-exports.find = emoji => {
-  assert.string(emoji)
+exports.find = (emoji) => {
+  assert.string(emoji);
 
-  const name = exports.which(emoji)
+  const name = exports.which(emoji);
 
   if (name === undefined) {
-    return undefined
+    return undefined;
   }
 
-  return { name, emoji }
-}
+  return { name, emoji };
+};
 
-exports.has = name => {
-  assert.string(name)
+exports.has = (name) => {
+  assert.string(name);
 
-  return emoji.has(normalizeName(name)) || inverted.has(name)
-}
+  return (
+    emojiEntries.has(normalizeName(name)) || emojiEntriesInverted.has(name)
+  );
+};
 
-exports.replace = (input, replacement) => replace(input, replacement)
+exports.replace = replace;
 
-exports.strip = (input, { removeSpaces = true } = {}) => replace(input, '', { removeSpaces })
+exports.strip = (input, { preserveSpaces } = {}) =>
+  replace(input, "", { preserveSpaces });
 
-exports.emojify = (input, { fallback = '', format = (value) => value } = {}) => {
-  assert.string(input)
+exports.emojify = (
+  input,
+  { fallback = "", format = (value) => value } = {}
+) => {
+  assert.string(input);
 
   return input
     .split(/:([a-zA-Z0-9_\-+ ]+):/g)
     .map((part, index) => {
       if (index % 2 === 0) {
-        return part
+        return part;
       }
 
-      const emoji = exports.get(part)
-      return emoji ? format(emoji, part, input) : fallback
+      const emoji = exports.get(part);
+      return emoji ? format(emoji, part, input) : fallback;
     })
-    .join('')
-}
+    .join("");
+};
 
-exports.unemojify = input => {
-  assert.string(input)
+exports.unemojify = (input) => {
+  assert.string(input);
 
-  return input.match(charRegex)
-    .map(character => exports.which(character, { markdown: true }) || character)
-    .join('')
-}
+  return input
+    .match(charRegex)
+    .map(
+      (character) => exports.which(character, { markdown: true }) || character
+    )
+    .join("");
+};
 
-exports.findAll = input => exports.emojify(input).match(emojiRegex).map(character => exports.find(character))
+exports.findAll = (input) =>
+  (exports.emojify(input).match(emojiRegex) || []).map((character) =>
+    exports.find(character)
+  );
