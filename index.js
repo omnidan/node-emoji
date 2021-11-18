@@ -60,7 +60,7 @@ function replace(input, replacement, { preserveSpaces = false } = {}) {
     .join('')
 }
 
-exports.get = (name) => {
+exports.get = name => {
   assert.string(name)
 
   return emojiEntries.get(normalizeName(name))
@@ -84,7 +84,7 @@ exports.random = () => {
   return { name, emoji }
 }
 
-exports.search = (keyword) => {
+exports.search = keyword => {
   assert.string(keyword)
 
   keyword = normalizeName(keyword)
@@ -94,7 +94,7 @@ exports.search = (keyword) => {
     .map(([name, emoji]) => ({ name, emoji }))
 }
 
-exports.find = (emoji) => {
+exports.find = emoji => {
   assert.string(emoji)
 
   const name = exports.which(emoji)
@@ -106,7 +106,7 @@ exports.find = (emoji) => {
   return { name, emoji }
 }
 
-exports.has = (name) => {
+exports.has = name => {
   assert.string(name)
 
   return emojiEntries.has(normalizeName(name)) || emojiEntriesInverted.has(name)
@@ -117,10 +117,7 @@ exports.replace = replace
 exports.strip = (input, { preserveSpaces } = {}) =>
   replace(input, '', { preserveSpaces })
 
-exports.emojify = (
-  input,
-  { fallback = '', format = (value) => value } = {}
-) => {
+exports.emojify = (input, { fallback = '', format = value => value } = {}) => {
   assert.string(input)
 
   return input
@@ -136,18 +133,16 @@ exports.emojify = (
     .join('')
 }
 
-exports.unemojify = (input) => {
+exports.unemojify = input => {
   assert.string(input)
 
   return input
     .match(charRegex)
-    .map(
-      (character) => exports.which(character, { markdown: true }) || character
-    )
+    .map(character => exports.which(character, { markdown: true }) || character)
     .join('')
 }
 
-exports.findAll = (input) =>
-  (exports.emojify(input).match(emojiRegex) || []).map((character) =>
+exports.findAll = input =>
+  (exports.emojify(input).match(emojiRegex) || []).map(character =>
     exports.find(character)
   )
