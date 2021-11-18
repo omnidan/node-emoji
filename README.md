@@ -216,3 +216,13 @@ console.log(
 );
 // [ { name: 'unicorn', emoji: '🦄' }, { name: 'pizza', emoji: '🍕' } ]
 ```
+
+## Sponsorship
+
+- [GitHub Sponsors](https://github.com/sponsors/omnidan)
+- Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
+- Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
+
+### Special Thanks
+
+... to Anand Chowdhary (@AnandChowdhary) and his company Pabio (https://github.com/pabio) for sponsoring this project via [GitHub Sponsors](https://github.com/sponsors/omnidan)!
