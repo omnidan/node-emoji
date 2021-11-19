@@ -1,5 +1,4 @@
 'use strict'
-
 const is = require('@sindresorhus/is')
 const charRegex = require('char-regex')()
 const emojilib = require('emojilib')
@@ -29,7 +28,7 @@ function normalizeName(name) {
   return name
 }
 
-function replace(input, replacement, { preserveSpaces = false } = {}) {
+exports.replace = (input, replacement, { preserveSpaces = false } = {}) => {
   assert.string(input)
   assert.any([is.string, is.function], replacement)
   assert.boolean(preserveSpaces)
@@ -112,13 +111,14 @@ exports.has = name => {
   return emojiEntries.has(normalizeName(name)) || emojiEntriesInverted.has(name)
 }
 
-exports.replace = replace
-
 exports.strip = (input, { preserveSpaces } = {}) =>
-  replace(input, '', { preserveSpaces })
+  exports.replace(input, '', { preserveSpaces })
 
 exports.emojify = (input, { fallback = '', format = value => value } = {}) => {
   assert.string(input)
+
+  const fallbackFunction =
+    typeof fallback === 'function' ? fallback : () => fallback
 
   return input
     .split(/:([a-zA-Z0-9_\-+ ]+):/g)
@@ -128,7 +128,7 @@ exports.emojify = (input, { fallback = '', format = value => value } = {}) => {
       }
 
       const emoji = exports.get(part)
-      return emoji ? format(emoji, part, input) : fallback
+      return emoji ? format(emoji, part, input) : fallbackFunction(part)
     })
     .join('')
 }
