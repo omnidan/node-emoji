@@ -1,8 +1,11 @@
-# node-emoji [![Travis CI Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=for-the-badge)](https://travis-ci.org/omnidan/node-emoji)
+# node-emoji
 
-Friendly emoji lookups and parsing utilities for Node.js. ✨
+[![NPM Version](https://img.shields.io/npm/v/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji)
+[![NPM Downloads](https://img.shields.io/npm/dm/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji)
+[![Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=flat-square)](https://travis-ci.org/omnidan/node-emoji)
+[![https://paypal.me/DanielBugl/9](https://img.shields.io/badge/donate-paypal-yellow.svg?style=flat-square)](https://paypal.me/DanielBugl/9)
 
-[![NPM Badge](https://nodei.co/npm/node-emoji.png)](https://npmjs.com/package/node-emoji)
+_Friendly emoji lookups and parsing utilities for Node.js._ ✨
 
 `node-emoji` provides a fun, straightforward interface on top of the following excellent libraries:
 
@@ -10,6 +13,9 @@ Friendly emoji lookups and parsing utilities for Node.js. ✨
 - [`skin-tone`](https://npmjs.org/package/skin-tone): helps parse out base emojis from skin tones
 
 It also uses [`char-regex`](https://npmjs.org/package/char-regex) and [`emoji-regex`](https://npmjs.org/package/emoji-regex) on the inside to help parse emojis to and from plain text.
+
+> **Help wanted:** We are looking for volunteers to maintain this project.
+> If you are interested, feel free to contact me at [me@omnidan.net](mailto:me@omnidan.net).
 
 ## Install
 
@@ -216,6 +222,10 @@ console.log(
 )
 // [ { name: 'unicorn', emoji: '🦄' }, { name: 'pizza', emoji: '🍕' } ]
 ```
+
+## License
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji?ref=badge_large)
 
 ## Sponsorship
 

@@ -1,22 +1,11 @@
 {
   "name": "node-emoji",
-  "version": "2.0.0",
+  "version": "1.11.0",
   "description": "Friendly emoji lookups and parsing utilities for Node.js.",
-  "repository": "https://github.com/omnidan/node-emoji.git",
   "author": "Daniel Bugl <daniel.bugl@touchlay.com>",
-  "license": "MIT",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "index.d.ts"
-  ],
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "test": "jest",
-    "prepublishOnly": "npm run coverage",
-    "coverage": "jest --coverage"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omnidan/node-emoji.git"
   },
   "keywords": [
     "emoji",
@@ -30,6 +19,9 @@
     "ideogram",
     "ideograms"
   ],
+  "bugs": {
+    "url": "https://github.com/omnidan/node-emoji/issues"
+  },
   "dependencies": {
     "@sindresorhus/is": "^4.0.0",
     "char-regex": "^1.0.2",
@@ -39,5 +31,12 @@
   },
   "devDependencies": {
     "jest": "^27.3.1"
-  }
+  },
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "npm run coverage",
+    "coverage": "jest --coverage"
+  },
+  "main": "index.js",
+  "license": "MIT"
 }
