@@ -10,9 +10,7 @@ _Friendly emoji lookups and parsing utilities for Node.js._ ✨
 `node-emoji` provides a fun, straightforward interface on top of the following excellent libraries:
 
 - [`emojilib`](https://npmjs.org/package/emojilib): provides a list of emojis and keyword search on top of it
-- [`skin-tone`](https://npmjs.org/package/skin-tone): helps parse out base emojis from skin tones
-
-It also uses [`char-regex`](https://npmjs.org/package/char-regex) and [`emoji-regex`](https://npmjs.org/package/emoji-regex) on the inside to help parse emojis to and from plain text.
+- [`skin-tone`](https://npmjs.org/package/skin-tone): parses out base emojis from skin tones
 
 > **Help wanted:** We are looking for volunteers to maintain this project.
 > If you are interested, feel free to contact me at [me@omnidan.net](mailto:me@omnidan.net).
@@ -28,78 +26,49 @@ npm install node-emoji
 ```js
 const emoji = require('node-emoji')
 
-emoji.get('unicorn')
-// 🦄
+emoji.emojify('I :heart: :coffee:!') // 'I ❤️ ☕️!'
 
-emoji.get(':unicorn:')
-// 🦄
+emoji.find('heart') // { emoji: '❤', name: 'heart' }
+emoji.find('❤️') // { emoji: '❤', name: 'heart' }
 
-emoji.which('🦄')
-// "unicorn"
+emoji.get('unicorn') // 🦄
+emoji.get(':unicorn:') // 🦄
 
-emoji.emojify('I :heart: :coffee:!')
-// "I ❤️ ☕️!"
+emoji.has(':pizza:') // true
+emoji.has('🍕') // true
+emoji.has('unknown') // false
 
-emoji.random()
-// { name: 'house', emoji: '🏠' }
+emoji.random() // { name: 'house', emoji: '🏠' }
+
+emoji.replace('I ❤️ coffee!', 'love') // 'I love coffee!'
+
+emoji.search(':uni:') // [ { emoji: '🦄', name: 'unicorn' }, ... ]
+
+emoji.strip('I ❤️ coffee!') // 'I coffee!'
+
+emoji.unemojify('🍕 for 💃') // ':pizza: for :dancer:'
+
+emoji.which('🦄') // 'unicorn'
 ```
 
 ## API
 
-### emoji.get(name)
+### emoji.emojify(input, options?)
 
-Get an emoji from an emoji name.
-
-Parameters:
-
-1. **`name`** (`string`): The name of the emoji to get.
-
-```js
-const emoji = require('node-emoji')
-
-console.log(emoji.get('unicorn'))
-// '🦄'
-```
-
-### emoji.which(emoji)
-
-Get an emoji name from an emoji.
+Parse all markdown-encoded emojis in a string.
 
 Parameters:
 
-1. **`emoji`** (`string`): The emoji to get the name of.
+1. **`input`** (`string`): The input string containing the markdown-encoding emojis.
+1. **`options`** _(optional)_:
+   - **`fallback`** (`string`; default: `""`): The string to fallback to if an emoji was not found.
+   - **`format`** (`() => (emoji: string, part: string, string: string) => string`; default: `value => value`): Add a middleware layer to modify each matched emoji after parsing.
 
 ```js
 const emoji = require('node-emoji')
 
-console.log(emoji.which('🦄'))
-// 'unicorn'
-```
-
-### emoji.random()
-
-Get a random emoji.
-
-```js
-const emoji = require('node-emoji')
-
-console.log(emoji.random())
-// { name: 'unicorn', emoji: '🦄' }
-```
-
-### emoji.search(keyword)
-
-Search for emojis containing the provided name in their name.
-
-Parameters:
-
-1. **`keyword`** (`string`): The keyword to search for.
-
-```js
-const emoji = require('node-emoji')
-
-console.log(emoji.search('honey'))
-// [ { name: 'honeybee', emoji: '🐝' }, { name: 'honey_pot', emoji: '🍯' } ]
+console.log(emoji.emojify('The :unicorn: is a fictitious animal.'))
+// emoji.strip('The 🦄 is a fictitious animal.')
 ```
 
 ### emoji.find(emoji)
@@ -117,6 +86,21 @@ console.log(emoji.find('🦄'))
 // { name: 'unicorn', emoji: '🦄' }
 ```
 
+### emoji.get(name)
+
+Get an emoji from an emoji name.
+
+Parameters:
+
+1. **`name`** (`string`): The name of the emoji to get.
+
+```js
+const emoji = require('node-emoji')
+
+console.log(emoji.get('unicorn'))
+// '🦄'
+```
+
 ### emoji.has(emoji)
 
 Check if this library supports a specific emoji.
@@ -130,6 +114,17 @@ const emoji = require('node-emoji')
 
 console.log(emoji.has('🦄'))
 // true
+```
+
+### emoji.random()
+
+Get a random emoji.
+
+```js
+const emoji = require('node-emoji')
+
+console.log(emoji.random())
+// { name: 'unicorn', emoji: '🦄' }
 ```
 
 ### emoji.replace(input, replacement)
@@ -146,6 +141,21 @@ const emoji = require('node-emoji')
 
 console.log(emoji.replace('The 🦄 is a fictitious animal.', 'unicorn'))
 // 'The unicorn is a fictitious animal.'
+```
+
+### emoji.search(keyword)
+
+Search for emojis containing the provided name in their name.
+
+Parameters:
+
+1. **`keyword`** (`string`): The keyword to search for.
+
+```js
+const emoji = require('node-emoji')
+
+console.log(emoji.search('honey'))
+// [ { name: 'honeybee', emoji: '🐝' }, { name: 'honey_pot', emoji: '🍯' } ]
 ```
 
 ### emoji.strip(input, options?)
@@ -173,24 +183,6 @@ console.log(
 // emoji.strip(' The unicorn is a fictitious animal.')
 ```
 
-### emoji.emojify(input, options?)
-
-Parse all markdown-encoded emojis in a string.
-
-Parameters:
-
-1. **`input`** (`string`): The input string containing the markdown-encoding emojis.
-1. **`options`** _(optional)_:
-   - **`fallback`** (`string`; default: `""`): The string to fallback to if an emoji was not found.
-   - **`format`** (`() => (emoji: string, part: string, string: string) => string`; default: `value => value`): Add a middleware layer to modify each matched emoji after parsing.
-
-```js
-const emoji = require('node-emoji')
-
-console.log(emoji.emojify('The :unicorn: is a fictitious animal.'))
-// emoji.strip('The 🦄 is a fictitious animal.')
-```
-
 ### emoji.unemojify(input)
 
 Convert all emojis in a string to their markdown-encoded counterparts.
@@ -206,21 +198,19 @@ console.log(emoji.unemojify('The 🦄 is a fictitious animal.'))
 // emoji.strip('The :unicorn: is a fictitious animal.')
 ```
 
-### emoji.findAll(input)
+### emoji.which(emoji)
 
-Find all of the emojis in a string.
+Get an emoji name from an emoji.
 
 Parameters:
 
-1. **`input`** (`string`): The input string containing the emojis to find.
+1. **`emoji`** (`string`): The emoji to get the name of.
 
 ```js
 const emoji = require('node-emoji')
 
-console.log(
-  emoji.findAll('The 🦄 is a fictitious animal. 🍕 is an italian food.')
-)
-// [ { name: 'unicorn', emoji: '🦄' }, { name: 'pizza', emoji: '🍕' } ]
+console.log(emoji.which('🦄'))
+// 'unicorn'
 ```
 
 ## License

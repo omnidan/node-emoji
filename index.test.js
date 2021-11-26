@@ -2,23 +2,15 @@ const { describe, expect, it } = require('@jest/globals')
 const emoji = require('.')
 
 describe('emojify', () => {
-  it('parses :emoji: in a string and replaces them with the right emoji', () => {
-    expect(
-      emoji.emojify(
-        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
-      )
-    ).toBe('I ❤️  ☕! -  😯⭐😍  ::: test : : 👍+')
-  })
-
   it('handles flags correctly', () => {
     expect(
       emoji.emojify('Mexico :mexico: and Morocco :morocco: are not the same')
     ).toBe('Mexico 🇲🇽 and Morocco 🇲🇦 are not the same')
   })
 
-  it('removes unknown emoji with the empty string by default', () => {
+  it('leaves unknown emoji when no fallback is provided', () => {
     expect(emoji.emojify('I :unknown_emoji: :star: :another_one:')).toBe(
-      'I  ⭐ '
+      'I :unknown_emoji: ⭐ :another_one:'
     )
   })
 
@@ -30,7 +22,7 @@ describe('emojify', () => {
     ).toBe('I unknown ⭐ unknown')
   })
 
-  it('replaces unknown emoji with the fallback when a fallback string is provided', () => {
+  it('replaces unknown emoji with the fallback when a fallback function is provided', () => {
     expect(
       emoji.emojify('I :unknown_emoji: :star: :another_one:', {
         fallback: part => `(${part})`,
@@ -38,84 +30,112 @@ describe('emojify', () => {
     ).toBe('I (unknown_emoji) ⭐ (another_one)')
   })
 
+  it('parses a single :emoji: in a string when there is only one emoji', () => {
+    expect(emoji.emojify(':coffee:!')).toBe('☕!')
+  })
+
+  it('parses multiple :emoji: in a string when there are multiple emoji', () => {
+    expect(
+      emoji.emojify(
+        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
+      )
+    ).toBe('I ❤️  ☕! -  😯⭐😍  ::: test : : 👍+')
+  })
+
   it('formats emoji when given a format function', () => {
     expect(
       emoji.emojify('I :unknown_emoji: :star: :another_one:', {
         format: name => `[${name}]`,
       })
-    ).toBe('I  [⭐] ')
+    ).toBe('I [:unknown_emoji:] [⭐] [:another_one:]')
   })
 })
 
 describe('find', () => {
-  it('finds a emoji by :name:', () => {
-    expect(emoji.find(':heart:')).toBe({ emoji: '❤️', key: 'heart' })
+  it('returns an emoji when given a name', () => {
+    expect(emoji.find('heart')).toEqual({ emoji: '❤️', key: 'heart' })
   })
 
-  it('finds an emoji by name', () => {
-    expect(emoji.find('heart')).toBe({ emoji: '❤️', key: 'heart' })
+  it('returns an emoji when given a :name:', () => {
+    expect(emoji.find(':heart:')).toEqual({ emoji: '❤️', key: 'heart' })
   })
 
-  it('finds an alternate emoji by code', () => {
-    expect(emoji.find('❤')).toBe({ emoji: '❤️', key: 'heart' })
+  it('returns an emoji when given a code', () => {
+    expect(emoji.find('❤')).toEqual({ emoji: '❤', key: 'heart' })
   })
 
-  it('returns `undefined` for unknown emojis', () => {
+  it('returns the base emoji when given an alternate emoji code', () => {
+    expect(emoji.find('❤️')).toEqual({ emoji: '❤', key: 'heart' })
+  })
+
+  it('returns undefined when given an unknown name', () => {
+    expect(emoji.find('unknown_emoji')).toBeUndefined()
+  })
+
+  it('returns undefined when given an unknown :name:', () => {
     expect(emoji.find('unknown_emoji')).toBeUndefined()
   })
 })
 
-describe('findAll', () => {
-  it('returns an empty array when the input is blank', () => {
-    expect(emoji.findAll('')).toEqual([])
+describe('findByCode', () => {
+  it('returns undefined when given a name', () => {
+    expect(emoji.findByCode('heart')).toBeUndefined()
   })
 
-  it('returns an empty array when the input is unrelated', () => {
-    expect(emoji.findAll('unrelated')).toEqual([])
+  it('returns undefined when given a :name:', () => {
+    expect(emoji.findByCode(':heart:')).toBeUndefined()
   })
 
-  it('returns an empty array when the input is an unknown emoji', () => {
-    expect(emoji.findAll(':idontexist:')).toEqual([])
+  it('returns the emoji when given an emoji code', () => {
+    expect(emoji.findByCode('❤')).toEqual({ emoji: '❤', key: 'heart' })
   })
 
-  it('returns a matched emoji when the input contain an emoji', () => {
-    expect(emoji.findAll(':sparkling_heart:')).toEqual([
-      {
-        emoji: '💖',
-        name: 'sparkling_heart',
-      },
-    ])
+  it('returns the base emoji when given an alternate emoji code', () => {
+    expect(emoji.findByCode('❤️')).toEqual({ emoji: '❤', key: 'heart' })
+  })
+})
+
+describe('findByName', () => {
+  it('returns an emoji when given a name', () => {
+    expect(emoji.findByName('heart')).toEqual({ emoji: '❤️', key: 'heart' })
   })
 
-  it('returns matched emojis when the input contains emojis', () => {
-    expect(emoji.findAll('I :heart: ☕ and :pizza:!')).toEqual([
-      {
-        emoji: '❤️',
-        name: 'heart',
-      },
-      {
-        emoji: '☕',
-        name: 'coffee',
-      },
-      {
-        emoji: '🍕',
-        name: 'pizza',
-      },
-    ])
+  it('returns an emoji when given a :name:', () => {
+    expect(emoji.findByName(':heart:')).toEqual({ emoji: '❤️', key: 'heart' })
+  })
+
+  it('returns undefined when given an emoji code', () => {
+    expect(emoji.findByName('❤')).toBeUndefined()
+  })
+
+  it('returns undefined when given an alternate emoji code', () => {
+    expect(emoji.findByName('❤️')).toBeUndefined()
+  })
+
+  it('returns undefined when given an unknown name', () => {
+    expect(emoji.findByName('unknown_emoji')).toBeUndefined()
+  })
+
+  it('returns undefined when given an unknown :name:', () => {
+    expect(emoji.findByName('unknown_emoji')).toBeUndefined()
   })
 })
 
 describe('get', () => {
-  it('returns an emoji code when passed a string', () => {
+  it('returns an emoji code when given a string', () => {
     expect(emoji.get('coffee')).toEqual('☕')
   })
 
-  it('returns emoji code back when passed an emoji code', () => {
-    expect(emoji.get('👯‍♀️')).toEqual('👯‍♀️')
+  it('returns the contained emoji code when given markdown emoji', () => {
+    expect(emoji.get(':coffee:')).toEqual('☕')
   })
 
-  it('supports github flavored markdown emoji', () => {
-    expect(emoji.get(':coffee:')).toEqual('☕')
+  it('returns undefined when given an emoji', () => {
+    expect(emoji.get('👯')).toBeUndefined()
+  })
+
+  it('returns undefined when given an unknown word', () => {
+    expect(emoji.get('idontexist')).toBeUndefined()
   })
 })
 
@@ -186,13 +206,23 @@ describe('replace', () => {
   })
 
   it('replaces with the replacer when given a replacer', () => {
-    expect(emoji.replace('a 🌭 c', () => 'b')).toEqual('a bc')
+    expect(emoji.replace('a 🌭 c', ({ emoji }) => `>${emoji}<`)).toEqual(
+      'a >🌭<c'
+    )
+  })
+
+  it('replaces with the replacer and preserves spaces when given a replacer and preserveSpaces', () => {
+    expect(
+      emoji.replace('a 🌭 c', ({ emoji }) => `>${emoji}<`, {
+        preserveSpaces: true,
+      })
+    ).toEqual('a >🌭< c')
   })
 
   it('calls the replacer again when given multiple emojis', () => {
     expect(
       emoji.replace(
-        'a 🌭 b 🌭 🌭🌭 c',
+        'a 🌭 b 🌭 🍵☕ c',
         (() => {
           let counter = 0
           const letters = ['w', 'x', 'y', 'z']
@@ -203,9 +233,7 @@ describe('replace', () => {
   })
 
   it('strips complex emojis', () => {
-    expect(emoji.replace('Where did this 👩‍❤️‍💋‍👩 happen?', '')).toBe(
-      'Where did this happen?'
-    )
+    expect(emoji.replace('before 👩‍❤️‍💋‍👩 after', '')).toBe('before after')
   })
 
   it('strips flag emojis', () => {
@@ -278,6 +306,10 @@ describe('strip', () => {
 })
 
 describe('unemojify', () => {
+  it('returns a blank string when given a blank string', () => {
+    expect(emoji.unemojify('')).toBe('')
+  })
+
   it('returns a replaced emoji name when given a string with one emoji', () => {
     expect(emoji.unemojify('a ☕ c')).toEqual('a :coffee: c')
   })
@@ -287,19 +319,21 @@ describe('unemojify', () => {
   })
 
   it('returns a complex emoji name when given a complex emoji:', () => {
-    expect(emoji.unemojify('I love 👩‍❤️‍💋‍👩')).toBe('I love :couplekiss_woman_woman:')
+    expect(emoji.unemojify('before 👩‍❤️‍💋‍👩 after')).toBe(
+      'before :couplekiss_woman_woman: after'
+    )
   })
 
   it('parses emojis with names next to non-space characters', () => {
     expect(emoji.unemojify('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+')).toBe(
-      'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :thumbsup:+'
+      'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
     )
   })
 
   it('ignores only unknown emoji when given a string with some valid, some unknown emojis', () => {
     // Emoji :melting_face: (U+1FAE0) Unicode 14.0 draft: https://emojipedia.org/unicode-14.0
     expect(emoji.unemojify('I ⭐️ :another_one: 🫠')).toBe(
-      'I ⭐️ :another_one: 🫠'
+      'I :star: :another_one: 🫠'
     )
   })
 

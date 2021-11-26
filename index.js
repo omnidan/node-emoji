@@ -2,10 +2,39 @@
 const is = require('@sindresorhus/is')
 const charRegex = require('char-regex')()
 const emojilib = require('emojilib')
-const emojiRegex = require('emoji-regex')()
 const skinTone = require('skin-tone')
 
 const { assert } = is
+
+function asFunction(input) {
+  return typeof input === 'function' ? input : () => input
+}
+
+/**
+ * Non spacing mark contained by some emoticons (65039 - '️' - 0xFE0F).
+ *
+ * @remarks
+ * It's the 'Variant Form', which provides more information so that emoticons
+ * can be rendered as more colorful graphics. FE0E is a unicode text version
+ * whereas FE0F should be rendered as a graphical version.
+ * The code gracefully degrades.
+ */
+const NON_SPACING_MARK = String.fromCharCode(65039)
+const nonSpacingRegex = new RegExp(NON_SPACING_MARK, 'g')
+
+/**
+ * Removes the non-spacing-mark from the emoji code.
+ *
+ * @remarks
+ * Never send a stripped version to clients, as it kills graphical emoticons.
+ */
+function normalizeCode(code) {
+  return code.replace(nonSpacingRegex, '')
+}
+
+function normalizeName(name) {
+  return /:.+:/.test(name) ? name.slice(1, -1) : name
+}
 
 function randomItem(array) {
   return array[Math.floor(Math.random() * array.length)]
@@ -15,38 +44,91 @@ const emojiData = Object.entries(emojilib.lib).map(
   ([name, { char: emoji }]) => [name, emoji]
 )
 
-const emojiEntries = new Map(emojiData)
-const emojiEntriesInverted = new Map(
-  emojiData.map(([name, emoji]) => [emoji, name])
+const emojiCodesByName = new Map(emojiData)
+const emojiNamesByCode = new Map(
+  emojiData.map(([name, emoji]) => [normalizeCode(emoji), name])
 )
 
-function normalizeName(name) {
-  if (/:.+:/.test(name)) {
-    name = name.slice(1, -1)
-  }
+exports.emojify = (input, { fallback, format = name => name } = {}) => {
+  const fallbackFunction =
+    fallback === undefined ? fallback : asFunction(fallback)
 
-  return name
+  assert.string(input)
+  assert.any([is.undefined, is.function], fallbackFunction)
+  assert.function_(format)
+
+  return input.replace(/:([a-zA-Z0-9_\-+]+):/g, part => {
+    const found = exports.findByName(part)
+    if (found) {
+      return format(found.emoji, part, input)
+    }
+
+    if (fallbackFunction) {
+      return format(fallbackFunction(normalizeName(part)))
+    }
+
+    return format(part)
+  })
+}
+
+exports.find = codeOrName => {
+  return exports.findByCode(codeOrName) || exports.findByName(codeOrName)
+}
+
+exports.findByCode = code => {
+  assert.string(code)
+
+  const emojiNormalized = normalizeCode(code)
+  const key = emojiNamesByCode.get(emojiNormalized)
+
+  return key ? { emoji: emojiNormalized, key } : undefined
+}
+
+exports.findByName = name => {
+  assert.string(name)
+
+  const nameNormalized = normalizeName(name)
+  const emoji = emojiCodesByName.get(nameNormalized)
+
+  return emoji ? { emoji, key: nameNormalized } : undefined
+}
+
+exports.get = codeOrName => {
+  assert.string(codeOrName)
+
+  return emojiCodesByName.get(normalizeName(codeOrName))
+}
+
+exports.has = codeOrName => {
+  assert.string(codeOrName)
+
+  return (
+    emojiCodesByName.has(normalizeName(codeOrName)) ||
+    emojiNamesByCode.has(normalizeCode(codeOrName))
+  )
+}
+
+exports.random = () => {
+  const [name, emoji] = randomItem(emojiData)
+  return { name, emoji }
 }
 
 exports.replace = (input, replacement, { preserveSpaces = false } = {}) => {
+  const replace = asFunction(replacement)
+
   assert.string(input)
-  assert.any([is.string, is.function], replacement)
+  assert.function_(replace)
   assert.boolean(preserveSpaces)
 
-  const replaceFunction =
-    typeof replacement === 'function' ? replacement : () => replacement
-
   const characters = input.match(charRegex)
-
   if (characters === null) {
     return input
   }
 
   return characters
     .map((character, index) => {
-      const emoji = exports.which(character)
-
-      if (!emoji) {
+      const found = exports.findByCode(character)
+      if (!found) {
         return character
       }
 
@@ -54,33 +136,9 @@ exports.replace = (input, replacement, { preserveSpaces = false } = {}) => {
         characters[index + 1] = ''
       }
 
-      return replaceFunction(emoji, index, input)
+      return replace(found, index, input)
     })
     .join('')
-}
-
-exports.get = name => {
-  assert.string(name)
-
-  return emojiEntries.get(normalizeName(name))
-}
-
-exports.which = (emoji, { markdown = false } = {}) => {
-  assert.string(emoji)
-  assert.boolean(markdown)
-
-  const result = emojiEntriesInverted.get(skinTone(emoji, 'none'))
-
-  if (result === undefined) {
-    return undefined
-  }
-
-  return markdown ? `:${result}:` : result
-}
-
-exports.random = () => {
-  const [name, emoji] = randomItem(emojiData)
-  return { name, emoji }
 }
 
 exports.search = keyword => {
@@ -93,56 +151,30 @@ exports.search = keyword => {
     .map(([name, emoji]) => ({ name, emoji }))
 }
 
-exports.find = emoji => {
-  assert.string(emoji)
-
-  const name = exports.which(emoji)
-
-  if (name === undefined) {
-    return undefined
-  }
-
-  return { name, emoji }
-}
-
-exports.has = name => {
-  assert.string(name)
-
-  return emojiEntries.has(normalizeName(name)) || emojiEntriesInverted.has(name)
-}
-
 exports.strip = (input, { preserveSpaces } = {}) =>
   exports.replace(input, '', { preserveSpaces })
-
-exports.emojify = (input, { fallback = '', format = value => value } = {}) => {
-  assert.string(input)
-
-  const fallbackFunction =
-    typeof fallback === 'function' ? fallback : () => fallback
-
-  return input
-    .split(/:([a-zA-Z0-9_\-+ ]+):/g)
-    .map((part, index) => {
-      if (index % 2 === 0) {
-        return part
-      }
-
-      const emoji = exports.get(part)
-      return emoji ? format(emoji, part, input) : fallbackFunction(part)
-    })
-    .join('')
-}
 
 exports.unemojify = input => {
   assert.string(input)
 
-  return input
-    .match(charRegex)
+  const characters = input.match(charRegex)
+  if (characters === null) {
+    return input
+  }
+
+  return characters
     .map(character => exports.which(character, { markdown: true }) || character)
     .join('')
 }
 
-exports.findAll = input =>
-  (exports.emojify(input).match(emojiRegex) || []).map(character =>
-    exports.find(character)
-  )
+exports.which = (emoji, { markdown = false } = {}) => {
+  assert.string(emoji)
+  assert.boolean(markdown)
+
+  const result = exports.findByCode(skinTone(emoji, 'none'))
+  if (result === undefined) {
+    return undefined
+  }
+
+  return markdown ? `:${result.key}:` : result.key
+}
