@@ -19,18 +19,18 @@ You're now ready to use emoji in your node projects! Awesome! :metal:
 ```javascript
 var emoji = require('node-emoji')
 emoji.get('coffee') // returns the emoji code for coffee (displays emoji on terminals that support it)
-emoji.which(emoji.get('coffee')) // returns the string 'coffee'
+emoji.which(emoji.get('coffee')) // returns the string "coffee"
 emoji.get(':fast_forward:') // `.get` also supports github flavored markdown emoji (http://www.emoji-cheat-sheet.com/)
-emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emoji, in this case: returns 'I ❤️ ☕️!'
+emoji.emojify('I :heart: :coffee:!') // replaces all :emoji: with the actual emoji, in this case: returns "I ❤️ ☕️!"
 emoji.random() // returns a random emoji + key, e.g. `{ emoji: '❤️', key: 'heart' }`
 emoji.search('cof') // returns an array of objects with matching emoji's. `[{ emoji: '☕️', key: 'coffee' }, { emoji: ⚰', key: 'coffin'}]`
-emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns 'I :heart: :pizza:'
-emoji.find('🍕') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`
-emoji.find('pizza') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`
+emoji.unemojify('I ❤️ 🍕') // replaces the actual emoji with :emoji:, in this case: returns "I :heart: :pizza:"
+emoji.find('🍕') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
+emoji.find('pizza') // Find the `pizza` emoji, and returns `({ emoji: '🍕', key: 'pizza' })`;
 emoji.hasEmoji('🍕') // Validate if this library knows an emoji like `🍕`
 emoji.hasEmoji('pizza') // Validate if this library knowns a emoji with the name `pizza`
-emoji.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emoji's, in this case returns: 'low disk space'.
-emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: 'warning: low disk space'
+emoji.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emoji's, in this case returns: "low disk space".
+emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: "warning: low disk space"
 ```
 
 Note: There are some emojis that have "-" in their name, for example "t-rex" and refrencing them directly like this `(emoji.t-rex)` won't work. In such cases, use the `emoji['t-rex']` syntax instead
@@ -77,8 +77,8 @@ That's all, you now have more emoji you can use! :clap:
 ## Support / Donations
 If you want to support node-emoji development, please consider donating (it helps me keeping my projects active and alive!):
 
-* Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
-* Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
+ * Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
+ * Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
 
 ## Special Thanks
 
