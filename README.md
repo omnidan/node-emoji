@@ -33,7 +33,7 @@ emoji.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emo
 emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: "warning: low disk space"
 ```
 
-Note: There are some emojis that have "-" in their name, for example "t-rex" and refrencing them directly like this `(emoji.t-rex)` won't work. In such cases, use the `emoji['t-rex']` syntax instead
+Note: There are some emojis that have "-" in their name, for example "t-rex" and refrencing them directly like this `(emoji.t-rex)` won't work. In such cases, use the `emoji.get('t-rex')` syntax instead
 
 ## Options
 
@@ -79,7 +79,7 @@ If you want to support node-emoji development, please consider donating (it help
 
  * Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
  * Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
-
+ 
 ## Special Thanks
 
 ... to Anand Chowdhary (@AnandChowdhary) and his company Pabio (https://github.com/pabio) for sponsoring this project via [GitHub Sponsors](https://github.com/sponsors/omnidan)!
