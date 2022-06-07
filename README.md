@@ -33,6 +33,8 @@ emoji.strip('⚠️ 〰️ 〰️ low disk space') // Strips the string from emo
 emoji.replace('⚠️ 〰️ 〰️ low disk space', (emoji) => `${emoji.key}:`) // Replace emoji's by callback method: "warning: low disk space"
 ```
 
+Note: There are some emojis that have "-" in their name, for example "t-rex" and refrencing them directly like this `(emoji.t-rex)` won't work. In such cases, use the `emoji.get('t-rex')` syntax instead
+
 ## Options
 
 ### onMissing
