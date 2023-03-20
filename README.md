@@ -68,7 +68,7 @@ Parameters:
 const emoji = require('node-emoji')
 
 console.log(emoji.emojify('The :unicorn: is a fictitious animal.'))
-// emoji.strip('The 🦄 is a fictitious animal.')
+// 'The 🦄 is a fictitious animal.'
 ```
 
 ### emoji.find(emoji)
@@ -173,14 +173,14 @@ Parameters:
 const emoji = require('node-emoji')
 
 console.log(emoji.strip('🦄 The unicorn is a fictitious animal.'))
-// emoji.strip('The unicorn is a fictitious animal.')
+// 'The unicorn is a fictitious animal.'
 
 console.log(
   emoji.strip('🦄 The unicorn is a fictitious animal.', {
     preserveSpaces: true,
   })
 )
-// emoji.strip(' The unicorn is a fictitious animal.')
+// ' The unicorn is a fictitious animal.'
 ```
 
 ### emoji.unemojify(input)
@@ -195,7 +195,7 @@ Parameters:
 const emoji = require('node-emoji')
 
 console.log(emoji.unemojify('The 🦄 is a fictitious animal.'))
-// emoji.strip('The :unicorn: is a fictitious animal.')
+// 'The :unicorn: is a fictitious animal.'
 ```
 
 ### emoji.which(emoji)
