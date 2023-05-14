@@ -23,10 +23,10 @@
     "url": "https://github.com/omnidan/node-emoji/issues"
   },
   "dependencies": {
-    "@sindresorhus/is": "^5.3.0",
-    "char-regex": "^2.0.1",
-    "emojilib": "^3.0.9",
-    "skin-tone": "^3.0.0"
+    "@sindresorhus/is": "^3.1.2",
+    "char-regex": "^1.0.2",
+    "emojilib": "^2.4.0",
+    "skin-tone": "^2.0.0"
   },
   "devDependencies": {
     "jest": "^29.5.0"
