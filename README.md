@@ -24,7 +24,7 @@ npm install node-emoji
 ## Usage
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 emoji.emojify('I :heart: :coffee:!') // 'I ❤️ ☕️!'
 
@@ -65,7 +65,7 @@ Parameters:
    - **`format`** (`() => (emoji: string, part: string, string: string) => string`; default: `value => value`): Add a middleware layer to modify each matched emoji after parsing.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.emojify('The :unicorn: is a fictitious animal.'))
 // 'The 🦄 is a fictitious animal.'
@@ -80,7 +80,7 @@ Parameters:
 1. **`emoji`** (`string`): The emoji to get the data of.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.find('🦄'))
 // { name: 'unicorn', emoji: '🦄' }
@@ -95,7 +95,7 @@ Parameters:
 1. **`name`** (`string`): The name of the emoji to get.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.get('unicorn'))
 // '🦄'
@@ -110,7 +110,7 @@ Parameters:
 1. **`emoji`** (`string`): The emoji to check.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.has('🦄'))
 // true
@@ -121,7 +121,7 @@ console.log(emoji.has('🦄'))
 Get a random emoji.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.random())
 // { name: 'unicorn', emoji: '🦄' }
@@ -137,7 +137,7 @@ Parameters:
 - **`replacement`** (`string | (emoji: string, index: number, string: InputValueType) => string`): The character to replace the emoji with. Can be either a string or a callback that returns a string.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.replace('The 🦄 is a fictitious animal.', 'unicorn'))
 // 'The unicorn is a fictitious animal.'
@@ -152,7 +152,7 @@ Parameters:
 1. **`keyword`** (`string`): The keyword to search for.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.search('honey'))
 // [ { name: 'honeybee', emoji: '🐝' }, { name: 'honey_pot', emoji: '🍯' } ]
@@ -170,7 +170,7 @@ Parameters:
    - **`preserveSpaces`** (`boolean`): Whether to keep the extra space after a stripped emoji.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.strip('🦄 The unicorn is a fictitious animal.'))
 // 'The unicorn is a fictitious animal.'
@@ -192,7 +192,7 @@ Parameters:
 1. **`input`** (`string`): The input string containing the emojis.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.unemojify('The 🦄 is a fictitious animal.'))
 // 'The :unicorn: is a fictitious animal.'
@@ -207,11 +207,15 @@ Parameters:
 1. **`emoji`** (`string`): The emoji to get the name of.
 
 ```js
-const emoji = require('node-emoji')
+import * as emoji from 'node-emoji'
 
 console.log(emoji.which('🦄'))
 // 'unicorn'
 ```
+
+## Development
+
+See _[`.github/Development.md`](./github/Development.md)_.
 
 ## License
 
