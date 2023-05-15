@@ -1,6 +1,6 @@
 {
   "name": "node-emoji",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Friendly emoji lookups and parsing utilities for Node.js",
   "author": "Daniel Bugl <me@omnidan.net>",
   "repository": {

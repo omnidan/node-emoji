@@ -45,7 +45,7 @@ emoji.has('unknown') // false
 
 emoji.random() // { name: 'house', emoji: '🏠' }
 
-emoji.replace('I ❤️ coffee!', 'love') // 'I love coffee!'
+emoji.replace('I ❤️ coffee!', 'love', { preserveSpaces: true }) // 'I love coffee!'
 
 emoji.search(':uni:') // [ { emoji: '🦄', name: 'unicorn' }, ... ]
 
