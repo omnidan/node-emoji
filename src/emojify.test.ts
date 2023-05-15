@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { emojify } from './emojify.js'
+import { emojify } from './emojify'
 
 describe('emojify', () => {
   it('handles flags correctly', () => {

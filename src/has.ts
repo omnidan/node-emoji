@@ -1,9 +1,9 @@
 import { assert } from '@sindresorhus/is'
 
-import { emojiCodesByName, emojiNamesByCode } from './data.js'
-import { normalizeName, normalizeCode } from './utils.js'
+import { emojiCodesByName, emojiNamesByCode } from './data'
+import { normalizeName, normalizeCode } from './utils'
 
-export const has = codeOrName => {
+export const has = (codeOrName: string) => {
   assert.string(codeOrName)
 
   return (

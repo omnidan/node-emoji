@@ -7,5 +7,7 @@
       "statements": 100
     }
   },
-  "transform": {}
+  "transform": {
+    "src.+\\.(t|j)s$": "@swc/jest"
+  }
 }

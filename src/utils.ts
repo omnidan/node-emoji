@@ -2,7 +2,9 @@ import charRegex from 'char-regex'
 
 export const charRegexMatcher = charRegex()
 
-export function asFunction(input) {
+export function asFunction<T extends PropertyKey, Args extends any[]>(
+  input: T | ((...args: Args) => T)
+): (...args: Args) => T {
   return typeof input === 'function' ? input : () => input
 }
 
@@ -25,14 +27,14 @@ const nonSpacingRegex = new RegExp(NON_SPACING_MARK, 'g')
  * @remarks
  * Never send a stripped version to clients, as it kills graphical emoticons.
  */
-export function normalizeCode(code) {
+export function normalizeCode(code: string) {
   return code.replace(nonSpacingRegex, '')
 }
 
-export function normalizeName(name) {
+export function normalizeName(name: string) {
   return /:.+:/.test(name) ? name.slice(1, -1) : name
 }
 
-export function randomItem(array) {
+export function randomItem<T>(array: T[]) {
   return array[Math.floor(Math.random() * array.length)]
 }

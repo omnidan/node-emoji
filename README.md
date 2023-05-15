@@ -139,7 +139,7 @@ Replace the emojis in a string.
 Parameters:
 
 - **`input`** (`string`): The input string.
-- **`replacement`** (`string | (emoji: string, index: number, string: InputValueType) => string`): The character to replace the emoji with. Can be either a string or a callback that returns a string.
+- **`replacement`** (`string | (emoji: string, index: number, string: string) => string`): The character to replace the emoji with. Can be either a string or a callback that returns a string.
 
 ```js
 import * as emoji from 'node-emoji'
@@ -203,13 +203,15 @@ console.log(emoji.unemojify('The 🦄 is a fictitious animal.'))
 // 'The :unicorn: is a fictitious animal.'
 ```
 
-### emoji.which(emoji)
+### emoji.which(emoji, options?)
 
 Get an emoji name from an emoji.
 
 Parameters:
 
 1. **`emoji`** (`string`): The emoji to get the name of.
+1. **`options`** _(optional)_:
+   - **`markdown`** (`boolean`; default: `false`): Whether to return a `":emoji:"` string instead of `"emoji"`
 
 ```js
 import * as emoji from 'node-emoji'

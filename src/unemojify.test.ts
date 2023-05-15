@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { unemojify } from './unemojify.js'
+import { unemojify } from './unemojify'
 
 describe('unemojify', () => {
   it('returns a blank string when given a blank string', () => {

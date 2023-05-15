@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { replace } from './replace.js'
+import { replace } from './replace'
 
 describe('replace', () => {
   it('returns an empty string when given an empty string', () => {
