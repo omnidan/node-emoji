@@ -11,7 +11,7 @@ _simple emoji support for node.js projects_
 ## Installation
 To install `node-emoji`, you need [node.js](http://nodejs.org/) and [npm](https://github.com/npm/npm#super-easy-install). :rocket:
 
-Once you have that set-up, just run `npm install --save node-emoji` in your project directory. :ship:
+Once you have that set-up, just run `npm install --save node-emoji@^1.11.0` in your project directory. :ship:
 
 You're now ready to use emoji in your node projects! Awesome! :metal:
 
