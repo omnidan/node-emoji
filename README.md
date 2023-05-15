@@ -20,6 +20,12 @@ _Friendly emoji lookups and parsing utilities for Node.js_ ✨
 npm install --save node-emoji
 ```
 
+## 2.0 Release :rocket:
+
+This is the new 2.0 release of node-emoji, supporting ESM, new emoji and a new API.
+
+If you want to use the old version, please check out the [legacy branch](https://github.com/omnidan/node-emoji/tree/legacy).
+
 ## Usage
 
 ```js
