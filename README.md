@@ -2,10 +2,9 @@
 
 [![NPM Version](https://img.shields.io/npm/v/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji)
 [![NPM Downloads](https://img.shields.io/npm/dm/node-emoji.svg?style=flat-square)](https://www.npmjs.com/package/node-emoji)
-[![Build Status](https://img.shields.io/travis/omnidan/node-emoji/master.svg?style=flat-square)](https://travis-ci.org/omnidan/node-emoji)
-[![https://paypal.me/DanielBugl/9](https://img.shields.io/badge/donate-paypal-yellow.svg?style=flat-square)](https://paypal.me/DanielBugl/9)
+[![https://github.com/sponsors/omnidan](https://img.shields.io/badge/donate-github_sponsors-yellow.svg?style=flat-square)](https://github.com/sponsors/omnidan)
 
-_Friendly emoji lookups and parsing utilities for Node.js._ ✨
+_Friendly emoji lookups and parsing utilities for Node.js_ ✨
 
 `node-emoji` provides a fun, straightforward interface on top of the following excellent libraries:
 
@@ -18,7 +17,7 @@ _Friendly emoji lookups and parsing utilities for Node.js._ ✨
 ## Install
 
 ```sh
-npm install node-emoji
+npm install node-emoji@beta
 ```
 
 ## Usage
@@ -220,12 +219,6 @@ See _[`.github/Development.md`](./github/Development.md)_.
 ## License
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fomnidan%2Fnode-emoji?ref=badge_large)
-
-## Sponsorship
-
-- [GitHub Sponsors](https://github.com/sponsors/omnidan)
-- Paypal: [![daniel.bugl@gmail.com](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YBMS9EKTNPZHJ)
-- Bitcoin: [1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA](bitcoin:1J5eKsrAcPPLv5gPxSjSUkXnbJpkhndFgA)
 
 ### Special Thanks
 
