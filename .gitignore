@@ -1,7 +1,2 @@
-node_modules
-*.log
-*.sublime-project
-*.sublime-workspace
-*.txt
-test.js
-coverage
+coverage/
+node_modules/
