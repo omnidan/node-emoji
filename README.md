@@ -17,7 +17,7 @@ _Friendly emoji lookups and parsing utilities for Node.js_ ✨
 ## Install
 
 ```sh
-npm install node-emoji@beta
+npm install node-emoji
 ```
 
 ## Usage
