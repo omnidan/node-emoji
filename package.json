@@ -25,7 +25,7 @@
   "dependencies": {
     "@sindresorhus/is": "^5.3.0",
     "char-regex": "^2.0.1",
-    "emojilib": "^2.4.0",
+    "emojilib": "^3.0.10",
     "skin-tone": "^3.0.0",
     "tsup": "^6.7.0"
   },

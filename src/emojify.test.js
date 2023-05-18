@@ -38,9 +38,9 @@ describe('emojify', () => {
   it('parses multiple :emoji: in a string when there are multiple emoji', () => {
     expect(
       emojify(
-        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
+        'I :beating_heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
       )
-    ).toBe('I ❤️  ☕! -  😯⭐😍  ::: test : : 👍+')
+    ).toBe('I 💓  ☕! -  😯⭐😍  ::: test : : 👍+')
   })
 
   it('formats emoji when given a format function', () => {
@@ -49,5 +49,9 @@ describe('emojify', () => {
         format: name => `[${name}]`,
       })
     ).toBe('I [:unknown_emoji:] [⭐] [:another_one:]')
+  })
+
+  it('includes emojis added in emojilib v3', () => {
+    expect(emojify(':airplane_departure: and :flashlight:')).toBe('🛫 and 🔦')
   })
 })
