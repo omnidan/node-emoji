@@ -1,9 +1,9 @@
 import { assert } from '@sindresorhus/is'
 
-import { charRegexMatcher } from './utils.js'
-import { which } from './which.js'
+import { charRegexMatcher } from './utils'
+import { which } from './which'
 
-export const unemojify = input => {
+export const unemojify = (input: string) => {
   assert.string(input)
 
   const characters = input.match(charRegexMatcher)

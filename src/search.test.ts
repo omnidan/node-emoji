@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { search } from './search.js'
+import { search } from './search'
 
 describe('search', () => {
   it('returns a single pair when given a one-of emoji name', () => {

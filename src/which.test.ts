@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { which } from './which.js'
+import { which } from './which'
 
 describe('which', () => {
   it('returns the emoji name when given an emoji', () => {

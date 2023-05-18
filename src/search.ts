@@ -1,9 +1,9 @@
 import { assert } from '@sindresorhus/is'
 
-import { emojiData } from './data.js'
-import { normalizeName } from './utils.js'
+import { emojiData } from './data'
+import { normalizeName } from './utils'
 
-export const search = keyword => {
+export const search = (keyword: string) => {
   assert.string(keyword)
 
   keyword = normalizeName(keyword)

@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { strip } from './strip.js'
+import { strip } from './strip'
 
 describe('strip', () => {
   it('returns an empty string when given an empty string', () => {

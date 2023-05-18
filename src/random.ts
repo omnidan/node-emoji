@@ -1,5 +1,5 @@
-import { emojiData } from './data.js'
-import { randomItem } from './utils.js'
+import { emojiData } from './data'
+import { randomItem } from './utils'
 
 export const random = () => {
   const [name, emoji] = randomItem(emojiData)

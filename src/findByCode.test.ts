@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { findByCode } from './findByCode.js'
+import { findByCode } from './findByCode'
 
 describe('findByCode', () => {
   it('returns undefined when given a name', () => {

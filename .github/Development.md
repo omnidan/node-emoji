@@ -35,3 +35,17 @@ You can run with [Jest's `--watch` mode](https://jestjs.io/docs/cli#--watch) to 
 ```shell
 npm run test -- --watch
 ```
+
+## Type Checking
+
+Separately from building, [TypeScript](https://typescriptlang.org)'s compiler can be used to type check code:
+
+```shell
+npm run compile
+```
+
+You can run with with [TypeScript's `-w`/`--watch` mode](https://www.typescriptlang.org/docs/handbook/compiler-options.html) to continuously rerun the type checker as you make changes:
+
+```shell
+npm run compile -- -w
+```

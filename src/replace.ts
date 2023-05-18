@@ -1,11 +1,18 @@
 import { assert } from '@sindresorhus/is'
 
-import { asFunction, charRegexMatcher } from './utils.js'
-import { findByCode } from './findByCode.js'
+import { asFunction, charRegexMatcher } from './utils'
+import { findByCode } from './findByCode'
+import { Emoji } from './data'
+
+export type ReplaceReplacement = (
+  emoji: Emoji,
+  index: number,
+  string: string
+) => string
 
 export const replace = (
-  input,
-  replacement,
+  input: string,
+  replacement: string | ReplaceReplacement,
   { preserveSpaces = false } = {}
 ) => {
   const replace = asFunction(replacement)

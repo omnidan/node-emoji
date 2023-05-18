@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { find } from './find.js'
+import { find } from './find'
 
 describe('find', () => {
   it('returns an emoji when given a name', () => {
