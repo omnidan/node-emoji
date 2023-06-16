@@ -37,7 +37,7 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "build": "tsup ./src/index.ts --format esm,cjs --out-dir lib",
+    "build": "tsup ./src/index.ts --format esm,cjs --out-dir lib --dts",
     "compile": "tsc",
     "coverage": "npm run test -- --coverage",
     "prepublishOnly": "npm run coverage",
@@ -49,6 +49,7 @@
       "require": "./lib/index.cjs"
     }
   },
+  "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "license": "MIT",
   "type": "module"
