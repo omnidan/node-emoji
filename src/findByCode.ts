@@ -1,7 +1,7 @@
 import { assert } from '@sindresorhus/is'
 
-import { emojiNamesByCode } from './data'
-import { normalizeCode } from './utils'
+import { emojiNamesByCode } from './data.js'
+import { normalizeCode } from './utils.js'
 
 export const findByCode = (code: string) => {
   assert.string(code)

@@ -1,31 +1,31 @@
 import { assert, default as is } from '@sindresorhus/is'
 
-import { findByName } from './findByName'
-import { asFunction, normalizeName } from './utils'
+import { findByName } from './findByName.js'
+import { asFunction, normalizeName } from './utils.js'
 
 export type EmojifyFormat = (
   name: string,
   part?: string,
-  input?: string
+  input?: string,
 ) => string
 
 export interface EmojifyOptions {
-  fallback?: string | ((part: string) => string)
+  fallback?: ((part: string) => string) | string
   format?: EmojifyFormat
 }
 
 export const emojify = (
   input: string,
-  { fallback, format = name => name }: EmojifyOptions = {}
+  { fallback, format = name => name }: EmojifyOptions = {},
 ) => {
   const fallbackFunction =
     fallback === undefined ? fallback : asFunction(fallback)
 
   assert.string(input)
-  assert.any([is.undefined, is.function_], fallbackFunction)
-  assert.function_(format)
+  assert.any([is.undefined, is.function], fallbackFunction)
+  assert.function(format)
 
-  return input.replace(/:([a-zA-Z0-9_\-+]+):/g, part => {
+  return input.replace(/:[\w\-+]+:/g, part => {
     const found = findByName(part)
     if (found) {
       return format(found.emoji, part, input)

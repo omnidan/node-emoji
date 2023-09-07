@@ -1,7 +1,7 @@
 import { assert } from '@sindresorhus/is'
 
-import { normalizeName } from './utils'
-import { emojiCodesByName } from './data'
+import { emojiCodesByName } from './data.js'
+import { normalizeName } from './utils.js'
 
 export const get = (codeOrName: string) => {
   assert.string(codeOrName)

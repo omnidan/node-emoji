@@ -1,40 +1,40 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
-import { replace } from './replace'
+import { replace } from './replace.js'
 
 describe('replace', () => {
   it('returns an empty string when given an empty string', () => {
-    expect(replace('', 'b')).toEqual('')
+    expect(replace('', 'b')).toBe('')
   })
 
   it('returns the input text when given text without emojis', () => {
-    expect(replace('no emojis', 'b')).toEqual('no emojis')
+    expect(replace('no emojis', 'b')).toBe('no emojis')
   })
 
   it('returns a single emoji replacement when given text with one emoji', () => {
-    expect(replace('a ☕ c', 'b')).toEqual('a bc')
+    expect(replace('a ☕ c', 'b')).toBe('a bc')
   })
 
   it('returns multiple emoji replacement when given text with multiple emojis', () => {
-    expect(replace('a ☕ c 🍕 d', 'b')).toEqual('a bc bd')
+    expect(replace('a ☕ c 🍕 d', 'b')).toBe('a bc bd')
   })
 
   it('preserves spaces around emojis when preserveSpaces is true', () => {
-    expect(replace('a ☕ c 🍕 d', 'b', { preserveSpaces: true })).toEqual(
-      'a b c b d'
+    expect(replace('a ☕ c 🍕 d', 'b', { preserveSpaces: true })).toBe(
+      'a b c b d',
     )
   })
 
   it('replaces with the replacer when given a replacer', () => {
-    expect(replace('a 🌭 c', ({ emoji }) => `>${emoji}<`)).toEqual('a >🌭<c')
+    expect(replace('a 🌭 c', ({ emoji }) => `>${emoji}<`)).toBe('a >🌭<c')
   })
 
   it('replaces with the replacer and preserves spaces when given a replacer and preserveSpaces', () => {
     expect(
       replace('a 🌭 c', ({ emoji }) => `>${emoji}<`, {
         preserveSpaces: true,
-      })
-    ).toEqual('a >🌭< c')
+      }),
+    ).toBe('a >🌭< c')
   })
 
   it('calls the replacer again when given multiple emojis', () => {
@@ -45,9 +45,9 @@ describe('replace', () => {
           let counter = 0
           const letters = ['w', 'x', 'y', 'z']
           return () => letters[counter++]
-        })()
-      )
-    ).toEqual('a wb xyzc')
+        })(),
+      ),
+    ).toBe('a wb xyzc') // cspell:disable-line
   })
 
   it('strips complex emojis', () => {
@@ -59,6 +59,6 @@ describe('replace', () => {
   })
 
   it('ignores known existing complex emojis', () => {
-    expect(replace('Some 🍕❤️‍💋‍☕ emoji', '')).toEqual('Some ❤️‍💋‍☕ emoji')
+    expect(replace('Some 🍕❤️‍💋‍☕ emoji', '')).toBe('Some ❤️‍💋‍☕ emoji')
   })
 })

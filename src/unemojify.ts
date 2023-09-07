@@ -1,7 +1,7 @@
 import { assert } from '@sindresorhus/is'
 
-import { charRegexMatcher } from './utils'
-import { which } from './which'
+import { charRegexMatcher } from './utils.js'
+import { which } from './which.js'
 
 export const unemojify = (input: string) => {
   assert.string(input)
@@ -12,6 +12,6 @@ export const unemojify = (input: string) => {
   }
 
   return characters
-    .map(character => which(character, { markdown: true }) || character)
+    .map(character => which(character, { markdown: true }) ?? character)
     .join('')
 }

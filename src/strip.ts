@@ -1,4 +1,4 @@
-import { replace } from './replace'
+import { replace } from './replace.js'
 
 export interface StripOptions {
   preserveSpaces?: boolean

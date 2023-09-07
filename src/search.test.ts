@@ -1,10 +1,10 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
-import { search } from './search'
+import { search } from './search.js'
 
 describe('search', () => {
   it('returns a single pair when given a one-of emoji name', () => {
-    expect(search('100')).toEqual([{ name: '100', emoji: '💯' }])
+    expect(search('100')).toEqual([{ emoji: '💯', name: '100' }])
   })
 
   it('returns multiple emojis when given a common substring', () => {

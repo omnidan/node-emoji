@@ -1,7 +1,7 @@
 import { assert } from '@sindresorhus/is'
 import skinTone from 'skin-tone'
 
-import { findByCode } from './findByCode'
+import { findByCode } from './findByCode.js'
 
 export interface WhichOptions {
   markdown?: boolean
@@ -9,7 +9,7 @@ export interface WhichOptions {
 
 export const which = (
   emoji: string,
-  { markdown = false }: WhichOptions = {}
+  { markdown = false }: WhichOptions = {},
 ) => {
   assert.string(emoji)
   assert.boolean(markdown)

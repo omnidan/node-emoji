@@ -1,24 +1,24 @@
 import { assert } from '@sindresorhus/is'
 
-import { asFunction, charRegexMatcher } from './utils'
-import { findByCode } from './findByCode'
-import { Emoji } from './data'
+import { Emoji } from './data.js'
+import { findByCode } from './findByCode.js'
+import { asFunction, charRegexMatcher } from './utils.js'
 
 export type ReplaceReplacement = (
   emoji: Emoji,
   index: number,
-  string: string
+  string: string,
 ) => string
 
 export const replace = (
   input: string,
-  replacement: string | ReplaceReplacement,
-  { preserveSpaces = false } = {}
+  replacement: ReplaceReplacement | string,
+  { preserveSpaces = false } = {},
 ) => {
   const replace = asFunction(replacement)
 
   assert.string(input)
-  assert.function_(replace)
+  assert.function(replace)
   assert.boolean(preserveSpaces)
 
   const characters = input.match(charRegexMatcher)
