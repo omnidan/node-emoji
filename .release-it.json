@@ -7,5 +7,12 @@
     "autoGenerate": true,
     "release": true,
     "releaseName": "v${version}"
+  },
+  "npm": { "publishArgs": ["--access public", "--provenance"] },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "infile": "CHANGELOG.md",
+      "preset": "angular"
+    }
   }
 }

@@ -6,10 +6,10 @@
 	<a href="#contributors" target="_blank">
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 32" src="https://img.shields.io/badge/all_contributors-32-21bb42.svg" />
+<img alt="All Contributors: 32 👪" src="https://img.shields.io/badge/all_contributors-32_👪-21bb42.svg" />
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
-	</a>
+</a>
 	<a href="https://codecov.io/gh/omnidan/node-emoji" target="_blank">
 		<img alt="Codecov Test Coverage" src="https://codecov.io/gh/omnidan/node-emoji/branch/main/graph/badge.svg"/>
 	</a>
@@ -24,6 +24,8 @@
 	</a>
 	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
 	<img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
+	<img alt="npm package version" src="https://img.shields.io/npm/v/node-emoji?color=21bb42" />
+	<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
 </p>
 
 `node-emoji` provides a fun, straightforward interface on top of the following excellent libraries:
@@ -265,7 +267,7 @@ See _[`.github/Development.md`](./github/Development.md)_.
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/alexlitel"><img src="https://avatars.githubusercontent.com/u/12000084?v=4?s=100" width="100px;" alt="Alex Litel"/><br /><sub><b>Alex Litel</b></sub></a><br /><a href="https://github.com/omnidan/node-emoji/commits?author=alexlitel" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://alex-rudenko.com/"><img src="https://avatars.githubusercontent.com/u/399150?v=4?s=100" width="100px;" alt="Alex Rudenko"/><br /><sub><b>Alex Rudenko</b></sub></a><br /><a href="https://github.com/omnidan/node-emoji/commits?author=OrKoN" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ahanriat"><img src="https://avatars.githubusercontent.com/u/1374161?v=4?s=100" width="100px;" alt="Antoine Hanriat"/><br /><sub><b>Antoine Hanriat</b></sub></a><br /><a href="https://github.com/omnidan/node-emoji/commits?author=ahanriat" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://omnidan.net/"><img src="https://avatars.githubusercontent.com/u/668674?v=4?s=100" width="100px;" alt="Daniel Bugl"/><br /><sub><b>Daniel Bugl</b></sub></a><br /><a href="#ideas-omnidan" title="Ideas, Planning, & Feedback">🤔</a> <a href="#fundingFinding-omnidan" title="Funding Finding">🔍</a> <a href="#tool-omnidan" title="Tools">🔧</a> <a href="https://github.com/omnidan/node-emoji/commits?author=omnidan" title="Code">💻</a> <a href="#infra-omnidan" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-omnidan" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://omnidan.net/"><img src="https://avatars.githubusercontent.com/u/668674?v=4?s=100" width="100px;" alt="Daniel Bugl"/><br /><sub><b>Daniel Bugl</b></sub></a><br /><a href="https://github.com/omnidan/node-emoji/commits?author=omnidan" title="Code">💻</a> <a href="#maintenance-omnidan" title="Maintenance">🚧</a></td>
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/DanielHilton"><img src="https://avatars.githubusercontent.com/u/28859662?v=4?s=100" width="100px;" alt="Daniel Hilton"/><br /><sub><b>Daniel Hilton</b></sub></a><br /><a href="https://github.com/omnidan/node-emoji/commits?author=DanielHilton" title="Code">💻</a></td>

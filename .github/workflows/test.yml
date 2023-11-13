@@ -1,13 +1,14 @@
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
-      - run: pnpm build
-      - run: node ./lib/index.js
+      - run: pnpm run test --coverage
+      - name: Codecov
+        uses: codecov/codecov-action@v3
 
-name: Build
+name: Test
 
 on:
   pull_request: ~

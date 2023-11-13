@@ -1,5 +1,5 @@
 {
-  "badgeTemplate": "<img alt=\"All Contributors: <%= contributors.length %>\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-21bb42.svg\" />",
+  "badgeTemplate": "<img alt=\"All Contributors: <%= contributors.length %> 👪\" src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>_👪-21bb42.svg\" />",
   "commit": false,
   "commitConvention": "angular",
   "contributors": [
@@ -135,11 +135,12 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/668674?v=4",
       "profile": "https://omnidan.net/",
       "contributions": [
-        "ideas",
-        "fundingFinding",
-        "tool",
+        "bug",
         "code",
+        "fundingFinding",
+        "ideas",
         "infra",
+        "tool",
         "maintenance"
       ]
     },
@@ -244,3 +245,4 @@
   "repoHost": "https://github.com",
   "repoType": "github"
 }
+

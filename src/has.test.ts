@@ -16,11 +16,11 @@ describe('has', () => {
   })
 
   it('returns false when given unrelated text', () => {
-    expect(has('idontexist')).toBe(false)
+    expect(has('nonexistent')).toBe(false)
   })
 
   it('returns false when given an unknown markdown name', () => {
-    expect(has(':idontexist:')).toBe(false)
+    expect(has(':nonexistent:')).toBe(false)
   })
 
   it('returns true when given a emoji in base form', () => {
