@@ -1,6 +1,6 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
-import { has } from './has'
+import { has } from './has.js'
 
 describe('has', () => {
   it('returns true when given an emoji', () => {
@@ -16,11 +16,11 @@ describe('has', () => {
   })
 
   it('returns false when given unrelated text', () => {
-    expect(has('idontexist')).toBe(false)
+    expect(has('nonexistent')).toBe(false)
   })
 
   it('returns false when given an unknown markdown name', () => {
-    expect(has(':idontexist:')).toBe(false)
+    expect(has(':nonexistent:')).toBe(false)
   })
 
   it('returns true when given a emoji in base form', () => {

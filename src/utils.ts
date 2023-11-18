@@ -2,8 +2,8 @@ import charRegex from 'char-regex'
 
 export const charRegexMatcher = charRegex()
 
-export function asFunction<T extends PropertyKey, Args extends any[]>(
-  input: T | ((...args: Args) => T)
+export function asFunction<T extends PropertyKey, Args extends unknown[]>(
+  input: ((...args: Args) => T) | T,
 ): (...args: Args) => T {
   return typeof input === 'function' ? input : () => input
 }
@@ -11,7 +11,6 @@ export function asFunction<T extends PropertyKey, Args extends any[]>(
 /**
  * Non spacing mark contained by some emoticons (65039 - '️' - 0xFE0F).
  *
- * @remarks
  * It's the 'Variant Form', which provides more information so that emoticons
  * can be rendered as more colorful graphics. FE0E is a unicode text version
  * whereas FE0F should be rendered as a graphical version.
@@ -24,7 +23,6 @@ const nonSpacingRegex = new RegExp(NON_SPACING_MARK, 'g')
 /**
  * Removes the non-spacing-mark from the emoji code.
  *
- * @remarks
  * Never send a stripped version to clients, as it kills graphical emoticons.
  */
 export function normalizeCode(code: string) {

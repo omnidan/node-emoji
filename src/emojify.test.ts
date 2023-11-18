@@ -1,17 +1,17 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
-import { emojify } from './emojify'
+import { emojify } from './emojify.js'
 
 describe('emojify', () => {
   it('handles flags correctly', () => {
     expect(
-      emojify('Mexico :mexico: and Morocco :morocco: are not the same')
+      emojify('Mexico :mexico: and Morocco :morocco: are not the same'),
     ).toBe('Mexico 🇲🇽 and Morocco 🇲🇦 are not the same')
   })
 
   it('leaves unknown emoji when no fallback is provided', () => {
     expect(emojify('I :unknown_emoji: :star: :another_one:')).toBe(
-      'I :unknown_emoji: ⭐ :another_one:'
+      'I :unknown_emoji: ⭐ :another_one:',
     )
   })
 
@@ -19,7 +19,7 @@ describe('emojify', () => {
     expect(
       emojify('I :unknown_emoji: :star: :another_one:', {
         fallback: 'unknown',
-      })
+      }),
     ).toBe('I unknown ⭐ unknown')
   })
 
@@ -27,7 +27,7 @@ describe('emojify', () => {
     expect(
       emojify('I :unknown_emoji: :star: :another_one:', {
         fallback: part => `(${part})`,
-      })
+      }),
     ).toBe('I (unknown_emoji) ⭐ (another_one)')
   })
 
@@ -38,8 +38,8 @@ describe('emojify', () => {
   it('parses multiple :emoji: in a string when there are multiple emoji', () => {
     expect(
       emojify(
-        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+'
-      )
+        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+',
+      ),
     ).toBe('I ❤️  ☕! -  😯⭐😍  ::: test : : 👍+')
   })
 
@@ -47,7 +47,7 @@ describe('emojify', () => {
     expect(
       emojify('I :unknown_emoji: :star: :another_one:', {
         format: name => `[${name}]`,
-      })
+      }),
     ).toBe('I [:unknown_emoji:] [⭐] [:another_one:]')
   })
 })

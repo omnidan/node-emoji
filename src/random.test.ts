@@ -1,8 +1,8 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
-import { has } from './has'
-import { get } from './get'
-import { random } from './random'
+import { get } from './get.js'
+import { has } from './has.js'
+import { random } from './random.js'
 
 describe('random', () => {
   it('returns a random emoji and the corresponding key', () => {
