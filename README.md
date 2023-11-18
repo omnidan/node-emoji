@@ -1,6 +1,6 @@
 <h1 align="center">node-emoji</h1>
 
-<p align="center">Friendly emoji lookups and parsing utilities for Node.js. 😏</p>
+<p align="center">Friendly emoji lookups and parsing utilities for Node.js. 💖</p>
 
 <p align="center">
 	<a href="#contributors" target="_blank">
