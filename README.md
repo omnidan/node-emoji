@@ -3,25 +3,15 @@
 <p align="center">Friendly emoji lookups and parsing utilities for Node.js. 💖</p>
 
 <p align="center">
-	<a href="#contributors" target="_blank">
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 32 👪" src="https://img.shields.io/badge/all_contributors-32_👪-21bb42.svg" />
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
-</a>
-	<a href="https://codecov.io/gh/omnidan/node-emoji" target="_blank">
-		<img alt="Codecov Test Coverage" src="https://codecov.io/gh/omnidan/node-emoji/branch/main/graph/badge.svg"/>
-	</a>
-	<a href="https://github.com/omnidan/node-emoji/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank">
-		<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
-	</a>
-	<a href="https://github.com/omnidan/node-emoji/blob/main/LICENSE.md" target="_blank">
-		<img alt="License: MIT" src="https://img.shields.io/github/license/omnidan/node-emoji?color=21bb42">
-	</a>
-	<a href="https://github.com/sponsors/omnidan" target="_blank">
-		<img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" />
-	</a>
+	<!-- prettier-ignore-start -->
+	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+  <a href="#contributors" target="_blank"><img alt="All Contributors: 32 👪" src="https://img.shields.io/badge/all_contributors-32_👪-21bb42.svg" /></a>
+  <!-- ALL-CONTRIBUTORS-BADGE:END -->
+	<!-- prettier-ignore-end -->
+	<a href="https://codecov.io/gh/JoshuaKGoldberg/node-emoji" target="_blank"><img alt="Codecov Test Coverage" src="https://codecov.io/gh/JoshuaKGoldberg/node-emoji/branch/main/graph/badge.svg"/></a>
+	<a href="https://github.com/JoshuaKGoldberg/node-emoji/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank"><img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" /></a>
+	<a href="https://github.com/JoshuaKGoldberg/node-emoji/blob/main/LICENSE.md" target="_blank"><img alt="License: MIT" src="https://img.shields.io/github/license/JoshuaKGoldberg/node-emoji?color=21bb42"></a>
+	<a href="https://github.com/sponsors/omnidan" target="_blank"><img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" /></a>
 	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
 	<img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
 	<img alt="npm package version" src="https://img.shields.io/npm/v/node-emoji?color=21bb42" />
