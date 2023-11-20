@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@sindresorhus/is':
-    specifier: ^6.0.0
-    version: 6.0.0
+    specifier: ^4.6.0
+    version: 4.6.0
   char-regex:
-    specifier: ^2.0.0
-    version: 2.0.1
+    specifier: ^1.0.2
+    version: 1.0.2
   emojilib:
     specifier: ^2.4.0
     version: 2.4.0
@@ -1434,15 +1434,15 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
+  /@sindresorhus/is@4.6.0:
+    resolution: {integrity: sha512-t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==}
+    engines: {node: '>=10'}
+    dev: false
+
   /@sindresorhus/is@5.3.0:
     resolution: {integrity: sha512-CX6t4SYQ37lzxicAqsBtxA3OseeoVrh9cSJ5PFYam0GksYlupRfy1A+Q4aYD3zvcfECLc0zO2u+ZnR2UYKvCrw==}
     engines: {node: '>=14.16'}
     dev: true
-
-  /@sindresorhus/is@6.0.0:
-    resolution: {integrity: sha512-iVkg+3V+GJfof7yAHOxHyoiEfgpRJhnddOY3EsTM/uqwcm6M/jDQwK1n1nnraMpTRT36CxS0RCtJohggaQ0jgQ==}
-    engines: {node: '>=16'}
-    dev: false
 
   /@sindresorhus/merge-streams@1.0.0:
     resolution: {integrity: sha512-rUV5WyJrJLoloD4NDN1V1+LDMDWOa4OTsT4yYJwQNpTU6FWxkxHpL7eu4w+DmiH8x/EAM1otkPE1+LaspIbplw==}
@@ -2313,9 +2313,9 @@ packages:
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
-  /char-regex@2.0.1:
-    resolution: {integrity: sha512-oSvEeo6ZUD7NepqAat3RqoucZ5SeqLJgOvVIwkafu6IP3V0pO38s/ypdVUmDDK6qIIHNlYHJAKX9E7R7HoKElw==}
-    engines: {node: '>=12.20'}
+  /char-regex@1.0.2:
+    resolution: {integrity: sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==}
+    engines: {node: '>=10'}
     dev: false
 
   /character-entities-legacy@1.1.4:

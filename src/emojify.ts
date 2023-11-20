@@ -1,4 +1,4 @@
-import { assert, default as is } from '@sindresorhus/is'
+import is from '@sindresorhus/is'
 
 import { findByName } from './findByName.js'
 import { asFunction, normalizeName } from './utils.js'
@@ -21,9 +21,9 @@ export const emojify = (
   const fallbackFunction =
     fallback === undefined ? fallback : asFunction(fallback)
 
-  assert.string(input)
-  assert.any([is.undefined, is.function], fallbackFunction)
-  assert.function(format)
+  is.assert.string(input)
+  is.assert.any([is.default.undefined, is.default.function_], fallbackFunction)
+  is.assert.function_(format)
 
   return input.replace(/:[\w\-+]+:/g, part => {
     const found = findByName(part)

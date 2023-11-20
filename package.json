@@ -29,6 +29,10 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": {
+        "import": "./lib/index.d.ts",
+        "require": "./lib/index.d.cts"
+      },
       "import": "./lib/index.js",
       "require": "./lib/index.cjs"
     }
@@ -58,8 +62,8 @@
     "*": "prettier --ignore-unknown --write"
   },
   "dependencies": {
-    "@sindresorhus/is": "^6.0.0",
-    "char-regex": "^2.0.0",
+    "@sindresorhus/is": "^4.6.0",
+    "char-regex": "^1.0.2",
     "emojilib": "^2.4.0",
     "skin-tone": "^2.0.0"
   },
