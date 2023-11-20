@@ -6,7 +6,7 @@ export default defineConfig({
     coverage: {
       all: true,
       branches: 100,
-      exclude: ['lib', 'src/*.d.ts', 'src/index.ts'],
+      exclude: ['lib', 'src/*.d.ts', 'src/e2e.cjs', 'src/index.ts'],
       functions: 100,
       include: ['src'],
       lines: 100,

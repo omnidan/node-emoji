@@ -18,7 +18,7 @@ export const replace = (
   const replace = asFunction(replacement)
 
   assert.string(input)
-  assert.function(replace)
+  assert.function_(replace)
   assert.boolean(preserveSpaces)
 
   const characters = input.match(charRegexMatcher)

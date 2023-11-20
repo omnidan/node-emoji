@@ -29,6 +29,10 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": {
+        "import": "./lib/index.d.ts",
+        "require": "./lib/index.d.cts"
+      },
       "import": "./lib/index.js",
       "require": "./lib/index.cjs"
     }
@@ -52,14 +56,15 @@
     "prepare": "husky install",
     "should-semantic-release": "should-semantic-release --verbose",
     "test": "vitest",
+    "test:cjs": "node ./src/e2e.cjs",
     "tsc": "tsc"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write"
   },
   "dependencies": {
-    "@sindresorhus/is": "^6.0.0",
-    "char-regex": "^2.0.0",
+    "@sindresorhus/is": "^4.6.0",
+    "char-regex": "^1.0.2",
     "emojilib": "^2.4.0",
     "skin-tone": "^3.0.0"
   },

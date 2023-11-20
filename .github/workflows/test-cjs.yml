@@ -1,13 +1,13 @@
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
       - run: pnpm build
-      - run: pnpm lint
+      - run: pnpm run test:cjs
 
-name: Lint
+name: Test CommonJS
 
 on:
   pull_request: ~
