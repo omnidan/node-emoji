@@ -7,7 +7,7 @@ jobs:
       - run: pnpm build
       - run: pnpm run test:cjs
 
-name: Test
+name: Test CommonJS
 
 on:
   pull_request: ~
