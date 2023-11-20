@@ -56,6 +56,7 @@
     "prepare": "husky install",
     "should-semantic-release": "should-semantic-release --verbose",
     "test": "vitest",
+    "test:cjs": "node ./src/e2e.cjs",
     "tsc": "tsc"
   },
   "lint-staged": {
