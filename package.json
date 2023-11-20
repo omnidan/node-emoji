@@ -1,6 +1,6 @@
 {
   "name": "node-emoji",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Friendly emoji lookups and parsing utilities for Node.js. 💖",
   "keywords": [
     "emoji",

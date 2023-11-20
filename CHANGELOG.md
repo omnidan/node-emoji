@@ -1,3 +1,9 @@
+## [2.1.3](https://github.com/omnidan/node-emoji/compare/v2.1.2...v2.1.3) (2023-11-20)
+
+### Bug Fixes
+
+- pin skin-tone to ^2.0.0 and add renovate.json ignoreDeps ([dcd6c43](https://github.com/omnidan/node-emoji/commit/dcd6c43f26b6537fb770b5309574c3e1ff3859c1))
+
 ## [2.1.2](https://github.com/omnidan/node-emoji/compare/v2.1.1...v2.1.2) (2023-11-20)
 
 ### Bug Fixes
