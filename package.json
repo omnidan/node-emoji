@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@sindresorhus/is": "^6.0.0",
-    "char-regex": "^1.0.2",
+    "char-regex": "^2.0.0",
     "emojilib": "^2.4.0",
     "skin-tone": "^2.0.0"
   },
