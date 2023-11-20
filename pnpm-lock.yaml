@@ -15,8 +15,8 @@ dependencies:
     specifier: ^2.4.0
     version: 2.4.0
   skin-tone:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^2.0.0
+    version: 2.0.0
 
 devDependencies:
   '@release-it/conventional-changelog':
@@ -6446,9 +6446,9 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
-  /skin-tone@3.0.0:
-    resolution: {integrity: sha512-+HTlUiUJr3SjmOiKV3dPeGWcl7dgqv09OgFWJxD26vOmYss7DWKCl6sqHEjM1hddov/vXQN2bOKIMr0DMUJVSQ==}
-    engines: {node: '>=12'}
+  /skin-tone@2.0.0:
+    resolution: {integrity: sha512-kUMbT1oBJCpgrnKoSr0o6wPtvRWT9W9UKvGLwfJYO2WuahZRHOpEyL1ckyMGgMWh0UdpmaoFqKKD29WTomNEGA==}
+    engines: {node: '>=8'}
     dependencies:
       unicode-emoji-modifier-base: 1.0.0
     dev: false
