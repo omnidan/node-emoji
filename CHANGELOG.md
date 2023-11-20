@@ -1,3 +1,9 @@
+## [2.1.2](https://github.com/omnidan/node-emoji/compare/v2.1.1...v2.1.2) (2023-11-20)
+
+### Bug Fixes
+
+- add back CJS support, with a test ([e2856d9](https://github.com/omnidan/node-emoji/commit/e2856d980d1e9335d5e62c7de25c1d22e6956584))
+
 ## [2.1.1](https://github.com/omnidan/node-emoji/compare/v2.1.0...v2.1.1) (2023-11-18)
 
 ### Bug Fixes
