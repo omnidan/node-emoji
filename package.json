@@ -94,7 +94,7 @@
     "knip": "^4.0.0",
     "lint-staged": "^15.1.0",
     "markdownlint": "^0.33.0",
-    "markdownlint-cli": "^0.38.0",
+    "markdownlint-cli": "^0.39.0",
     "npm-package-json-lint": "^7.1.0",
     "npm-package-json-lint-config-default": "^6.0.0",
     "prettier": "^3.0.3",
