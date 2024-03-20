@@ -74,7 +74,7 @@
     "@types/eslint": "^8.44.7",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
-    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/coverage-v8": "^1.0.0",
     "console-fail-test": "^0.2.3",
     "cspell": "^8.0.0",
     "eslint": "^8.53.0",
