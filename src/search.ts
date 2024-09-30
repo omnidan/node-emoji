@@ -3,6 +3,9 @@ import is, { assert } from '@sindresorhus/is'
 import { emojiData } from './data.js'
 import { normalizeName } from './utils.js'
 
+/**
+ * Search for emojis containing the provided name or pattern in their name.
+ */
 export const search = (keyword: RegExp | string) => {
   assert.any([is.default.string, is.default.regExp], keyword)
 
