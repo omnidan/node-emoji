@@ -7,6 +7,9 @@ export interface WhichOptions {
   markdown?: boolean
 }
 
+/**
+ * Get an emoji name from an emoji.
+ */
 export const which = (
   emoji: string,
   { markdown = false }: WhichOptions = {},
