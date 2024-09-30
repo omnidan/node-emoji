@@ -8,7 +8,7 @@ export interface StripOptions {
 }
 
 /**
- * Remove all of the emojis from a string.
+ * Remove all the emojis from a string.
  */
 export const strip = (input: string, { preserveSpaces }: StripOptions = {}) =>
   replace(input, '', { preserveSpaces })
