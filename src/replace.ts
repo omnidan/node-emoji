@@ -10,6 +10,9 @@ export type ReplaceReplacement = (
   string: string,
 ) => string
 
+/**
+ * Replace the emojis in a string.
+ */
 export const replace = (
   input: string,
   replacement: ReplaceReplacement | string,
