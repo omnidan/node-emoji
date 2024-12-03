@@ -1,3 +1,9 @@
+# [2.2.0](https://github.com/omnidan/node-emoji/compare/v2.1.3...v2.2.0) (2024-12-03)
+
+### Features
+
+- allow RegExp objects to be passed to search that are evaluated for each emoji ([7046cbb](https://github.com/omnidan/node-emoji/commit/7046cbbdda4282b9503ea10c7ac632f39bba74bd))
+
 ## [2.1.3](https://github.com/omnidan/node-emoji/compare/v2.1.2...v2.1.3) (2023-11-20)
 
 ### Bug Fixes
