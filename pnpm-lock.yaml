@@ -72,7 +72,7 @@ devDependencies:
     version: 2.11.0(eslint@8.57.1)(typescript@5.2.2)
   eslint-plugin-regexp:
     specifier: ^2.1.1
-    version: 2.1.1(eslint@8.57.1)
+    version: 2.7.0(eslint@8.57.1)
   eslint-plugin-vitest:
     specifier: ^0.3.9
     version: 0.3.9(@typescript-eslint/eslint-plugin@6.10.0)(eslint@8.57.1)(typescript@5.2.2)(vitest@0.34.6)
@@ -3731,8 +3731,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-regexp@2.1.1(eslint@8.57.1):
-    resolution: {integrity: sha512-FGa/idrL5tzMCnGylyx8DCWTX3vDuEtE/CVqTx+yYwe5qY3JRppbNVkOVGIkQF0klVlrG+LxwAXRXTUr5yU5uA==}
+  /eslint-plugin-regexp@2.7.0(eslint@8.57.1):
+    resolution: {integrity: sha512-U8oZI77SBtH8U3ulZ05iu0qEzIizyEDXd+BWHvyVxTOjGwcDcvy/kEpgFG4DYca2ByRLiVPFZ2GeH7j1pdvZTA==}
     engines: {node: ^18 || >=20}
     peerDependencies:
       eslint: '>=8.44.0'
@@ -3741,7 +3741,7 @@ packages:
       '@eslint-community/regexpp': 4.12.1
       comment-parser: 1.4.1
       eslint: 8.57.1
-      jsdoc-type-pratt-parser: 4.0.0
+      jsdoc-type-pratt-parser: 4.1.0
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
       scslre: 0.3.0
@@ -5179,6 +5179,11 @@ packages:
 
   /jsdoc-type-pratt-parser@4.0.0:
     resolution: {integrity: sha512-YtOli5Cmzy3q4dP26GraSOeAhqecewG04hoO8DY56CH4KJ9Fvv5qKWUCCo3HZob7esJQHCv6/+bnTy72xZZaVQ==}
+    engines: {node: '>=12.0.0'}
+    dev: true
+
+  /jsdoc-type-pratt-parser@4.1.0:
+    resolution: {integrity: sha512-Hicd6JK5Njt2QB6XYFS7ok9e37O8AYk3jTcppG4YVQnYjOemymvTcmc7OWsmq/Qqj5TdRFO5/x/tIPmBeRtGHg==}
     engines: {node: '>=12.0.0'}
     dev: true
 
