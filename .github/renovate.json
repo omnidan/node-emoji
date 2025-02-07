@@ -1,9 +1,3 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "automerge": true,
-  "ignoreDeps": ["@sindresorhus/is", "char-regex", "emojilib", "skin-tone"],
-  "internalChecksFilter": "strict",
-  "labels": ["dependencies"],
-  "minimumReleaseAge": "3 days",
-  "postUpdateOptions": ["pnpmDedupe"]
+  "enabled": false
 }
