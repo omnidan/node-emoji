@@ -85,7 +85,7 @@
     "eslint-plugin-markdown": "^3.0.1",
     "eslint-plugin-n": "^17.0.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
-    "eslint-plugin-perfectionist": "^2.3.0",
+    "eslint-plugin-perfectionist": "^4.0.0",
     "eslint-plugin-regexp": "^2.1.1",
     "eslint-plugin-vitest": "^0.3.9",
     "eslint-plugin-yml": "^1.10.0",
