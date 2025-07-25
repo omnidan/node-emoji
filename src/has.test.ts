@@ -8,11 +8,11 @@ describe('has', () => {
   })
 
   it('returns true when given the name of an emoji', () => {
-    expect(has('coffee')).toBe(true)
+    expect(has('hot_beverage')).toBe(true)
   })
 
   it('returns true when given a markdown emoji name', () => {
-    expect(has(':coffee:')).toBe(true)
+    expect(has(':hot_beverage:')).toBe(true)
   })
 
   it('returns false when given unrelated text', () => {

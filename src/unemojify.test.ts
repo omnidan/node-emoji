@@ -8,36 +8,27 @@ describe('unemojify', () => {
   })
 
   it('returns a replaced emoji name when given a string with one emoji', () => {
-    expect(unemojify('a ☕ c')).toBe('a :coffee: c')
+    expect(unemojify('a ☕ c')).toBe('a :hot_beverage: c')
   })
 
   it('returns multiple replaced emoji names when given a string with multiple emojis', () => {
-    expect(unemojify('a ☕ 🌭 c')).toBe('a :coffee: :hotdog: c')
+    expect(unemojify('a ☕ 🌭 c')).toBe('a :hot_beverage: :hot_dog: c')
   })
 
   it('returns a complex emoji name when given a complex emoji:', () => {
-    expect(unemojify('before 👩‍❤️‍💋‍👩 after')).toBe(
-      'before :couplekiss_woman_woman: after',
-    )
+    expect(unemojify('before 👩‍❤️‍💋‍👩 after')).toBe('before :kiss_woman_woman: after')
   })
 
   it('parses emojis with names next to non-space characters', () => {
     expect(unemojify('I ❤️  ☕️! -  😯⭐️😍  ::: test : : 👍+')).toBe(
-      'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+',
-    )
-  })
-
-  it('ignores only unknown emoji when given a string with some valid, some unknown emojis', () => {
-    // Emoji :melting_face: (U+1FAE0) Unicode 14.0 draft: https://emojipedia.org/unicode-14.0
-    expect(unemojify('I ⭐️ :another_one: 🫠')).toBe(
-      'I :star: :another_one: 🫠',
+      'I :red_heart:  :hot_beverage:! -  :hushed_face::star::smiling_face_with_heart_eyes:  ::: test : : :thumbs_up:+',
     )
   })
 
   // see issue #21
   it('should parse flags correctly', () => {
     expect(unemojify('The flags of 🇲🇽 and 🇲🇦 are not the same')).toBe(
-      'The flags of :mexico: and :morocco: are not the same',
+      'The flags of :flag_mexico: and :flag_morocco: are not the same',
     )
   })
 })

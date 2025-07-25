@@ -4,11 +4,11 @@ import { findByName } from './findByName.js'
 
 describe('findByName', () => {
   it('returns an emoji when given a name', () => {
-    expect(findByName('heart')).toEqual({ emoji: '❤️', key: 'heart' })
+    expect(findByName('red_heart')).toEqual({ emoji: '❤️', key: 'red_heart' })
   })
 
   it('returns an emoji when given a :name:', () => {
-    expect(findByName(':heart:')).toEqual({ emoji: '❤️', key: 'heart' })
+    expect(findByName(':red_heart:')).toEqual({ emoji: '❤️', key: 'red_heart' })
   })
 
   it('returns undefined when given an emoji code', () => {

@@ -1,5 +1,3 @@
-import emojilib from 'emojilib'
-
 import { normalizeCode } from './utils.js'
 
 export interface Emoji {
@@ -7,12 +5,20 @@ export interface Emoji {
   key: string
 }
 
-export const emojiData = Object.entries(emojilib.lib).map(
-  ([name, { char: emoji }]) => [name, emoji] as const,
+const emojiDataSource = require('unicode-emoji-json') as {
+  [key: string]: { slug: string }
+}
+
+export const emojiData = Object.entries(emojiDataSource).map(
+  ([emoji, { slug: name }]) => {
+    return [name, emoji] as const
+  },
 )
 
 export const emojiCodesByName = new Map(emojiData)
 
 export const emojiNamesByCode = new Map(
-  emojiData.map(([name, emoji]) => [normalizeCode(emoji), name]),
+  emojiData.map(([name, emoji]) => {
+    return [normalizeCode(emoji), name]
+  }),
 )

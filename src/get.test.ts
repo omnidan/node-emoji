@@ -4,11 +4,11 @@ import { get } from './get.js'
 
 describe('get', () => {
   it('returns an emoji code when given a string', () => {
-    expect(get('coffee')).toBe('☕')
+    expect(get('hot_beverage')).toBe('☕')
   })
 
   it('returns the contained emoji code when given markdown emoji', () => {
-    expect(get(':coffee:')).toBe('☕')
+    expect(get(':hot_beverage:')).toBe('☕')
   })
 
   it('returns undefined when given an emoji', () => {

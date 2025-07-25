@@ -12,10 +12,10 @@ describe('findByCode', () => {
   })
 
   it('returns the emoji when given an emoji code', () => {
-    expect(findByCode('❤')).toEqual({ emoji: '❤', key: 'heart' })
+    expect(findByCode('❤')).toEqual({ emoji: '❤', key: 'red_heart' })
   })
 
   it('returns the base emoji when given an alternate emoji code', () => {
-    expect(findByCode('❤️')).toEqual({ emoji: '❤', key: 'heart' })
+    expect(findByCode('❤️')).toEqual({ emoji: '❤', key: 'red_heart' })
   })
 })

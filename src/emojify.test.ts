@@ -5,7 +5,9 @@ import { emojify } from './emojify.js'
 describe('emojify', () => {
   it('handles flags correctly', () => {
     expect(
-      emojify('Mexico :mexico: and Morocco :morocco: are not the same'),
+      emojify(
+        'Mexico :flag_mexico: and Morocco :flag_morocco: are not the same',
+      ),
     ).toBe('Mexico 🇲🇽 and Morocco 🇲🇦 are not the same')
   })
 
@@ -32,13 +34,13 @@ describe('emojify', () => {
   })
 
   it('parses a single :emoji: in a string when there is only one emoji', () => {
-    expect(emojify(':coffee:!')).toBe('☕!')
+    expect(emojify(':hot_beverage:!')).toBe('☕!')
   })
 
   it('parses multiple :emoji: in a string when there are multiple emoji', () => {
     expect(
       emojify(
-        'I :heart:  :coffee:! -  :hushed::star::heart_eyes:  ::: test : : :+1:+',
+        'I :red_heart:  :hot_beverage:! -  :hushed_face::star::smiling_face_with_heart_eyes:  ::: test : : :thumbs_up:+',
       ),
     ).toBe('I ❤️  ☕! -  😯⭐😍  ::: test : : 👍+')
   })
