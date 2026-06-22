@@ -1,4 +1,5 @@
 import { assert } from '@sindresorhus/is'
+import skinTone from 'skin-tone'
 
 import { Emoji } from './data.js'
 import { findByCode } from './findByCode.js'
@@ -31,7 +32,7 @@ export const replace = (
 
   return characters
     .map((character, index) => {
-      const found = findByCode(character)
+      const found = findByCode(skinTone(character, 'none'))
       if (!found) {
         return character
       }
