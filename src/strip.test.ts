@@ -22,4 +22,9 @@ describe('strip', () => {
   it('preserves spaces around emoji when preserveSpaces is true', () => {
     expect(strip('a ☕ c', { preserveSpaces: true })).toBe('a  c')
   })
+
+  it('removes an emoji that has a skin tone modifier', () => {
+    expect(strip('X👍🏽Y')).toBe('XY')
+    expect(strip('a👋🏿b✋🏼c')).toBe('abc')
+  })
 })

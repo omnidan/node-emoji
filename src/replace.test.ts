@@ -61,4 +61,9 @@ describe('replace', () => {
   it('ignores known existing complex emojis', () => {
     expect(replace('Some 🍕❤️‍💋‍☕ emoji', '')).toBe('Some ❤️‍💋‍☕ emoji')
   })
+
+  it('replaces an emoji that has a skin tone modifier', () => {
+    expect(replace('👍🏽', () => 'Z')).toBe('Z')
+    expect(replace('thumbs 👍🏽 up', '')).toBe('thumbs up')
+  })
 })
