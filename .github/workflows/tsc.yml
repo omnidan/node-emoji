@@ -3,7 +3,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/prepare
+      - uses: ./.github/actions/prepare@main
       - run: pnpm tsc
 
 name: Type Check
